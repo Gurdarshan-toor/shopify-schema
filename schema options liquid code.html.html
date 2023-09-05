@@ -1,0 +1,972 @@
+===================struture==================================
+<section class="our-services">
+        <div class="container">
+            <h2 class="sec-heading">{{section.settings.heading}}</h2>
+          {% for block in section.blocks %}
+            <div class="card-wrapper flex">
+                <div class="service-card">
+                  <img class="icon" src="{{ block.settings.image | img_url: 'master'}}" alt="">
+                    <h2>{{ block.settings.card-heading }}</h2>
+                    <p>{{ block.settings.card-description }}</p>
+                  <a href="{{ block.settings.button-link }}"><button class="btn-secondary">{{ block.settings.button-text }}</button></a>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+    </section> 
+	----------- 
+{% schema %}
+  {
+    "name": "Our Services",
+    "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading"
+        },
+       {
+          "type": "select",              
+          "id": "text_align",             
+          "label": "Text alignment",  
+            "options": [
+                {
+                  "value": "left",
+                   "label": "left"
+                },                
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "right"
+                }
+              ]
+           },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 12,
+          "max": 46,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 16
+        }
+    ],
+     "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         },
+         {
+           "type": "text",
+           "id": "card-heading",
+           "label": "Services card Heading"
+         },
+         {
+           "type": "richtext",
+           "id": "card-description",
+           "label": "Card Description"
+         },
+         {
+           "type": "text",
+           "id": "button-text",
+           "label": "Button Text"
+         },
+         {
+           "type": "url",
+           "id": "button-link",
+           "label": "Button Link"
+         }
+       ]
+     }
+  ],
+  
+    "presets": [
+      {
+        "name": "Our Services"
+      }
+    ]
+  }
+{% endschema %}
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+======================= css file call karni=======================
+
+layout > theme.liquid 
+
+ <link rel="stylesheet" href="{{ 'custom-mw.css' | asset_url }}">
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+=================== Select options    Text alignment left right center ==================
+<style>
+.sec-heading{
+      text-align:{{ section.settings.text_align}};
+    }
+</style>
+  {
+          "type": "select",              
+          "id": "text_align",             
+          "label": "text Alignment",  
+            "options": [
+                {
+                  "value": "left",
+                   "label": "left"
+                },                
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "right"
+                }
+              ] 
+           }
+///////////////////////////////////////////////////////////////////////////////////////		
+   
+=================== Range font size ==========================================================	
+
+<style>
+
+font-size: {{ section.settings.font_size }}px;	
+   
+</style>
+
+ {
+          "type": "range",
+          "id": "font_size",
+          "min": 12,
+          "max": 46,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 16
+        }
+		
+		
+/////////////////////////////////////////////////////////////////////////////////////////////	
+
+===================== background ==============================================
+
+
+<div style="background{{block.settings.color_accent}}">
+
+
+
+{
+           "type": "color",
+           "id": "color_accent",
+           "label": "Buttons color",
+           "default": "#FFFFFF"
+         },
+		 
+//////////////////////////////////////////////////////////////////
+
+========================== checkbox show hide =============================================
+{% if block.settings.target_new_tab == true %} target="_blank" {% endif %}
+
+{
+			   "type": "checkbox",
+			   "id" : "target_new_tab",
+			   "label": "Open in new tab",
+			   "default": true
+		},
+
+
+.mob-banner-text {
+  position:relative !important;
+}
+
+{% if settings.layout-width == true %} mob-banner-text  {% endif %}
+
+
+ {% if section.settings.header_top == true %}
+    div#shopify-section-header{
+      top:0 !important;
+    }
+    {% endif %}
+	
+	
+	
+{% if block.settings.button-hide-show == true %}
+                  <a href="{{ block.settings.button-link }}"><button class="btn-secondary" style="background-color:{{block.settings.button_color_accent}}">{{ block.settings.button-text }}</button></a>
+{% endif %}
+
+	   {
+			   "type": "checkbox",
+			   "id" : "button-hide-show",
+			   "label": "Button Show",
+			   "default": true
+			 }
+		
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+======================= Radio left right center ===============
+				  
+	<div class="card-content" style="text-align: {{ block.settings.content_aligment }};">
+                  <img class="icon" src="{{ block.settings.image | img_url: 'master'}}" alt="{{ block.settings.image-title }}">
+                    <h2>{{ block.settings.card-heading }}</h2>
+                    <p>{{ block.settings.card-description }}</p>
+                  {% if block.settings.button-hide-show == true %}
+                  <a href="{{ block.settings.button-link }}"><button class="btn-secondary" style="background-color:{{block.settings.button_color_accent}}">{{ block.settings.button-text }}</button></a>
+                  {% endif %}
+    </div>		
+
+    {
+          "type": "radio",
+          "id": "content_aligment",
+          "label": "Content alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "centered",
+              "label": "Centered"
+            },
+			{
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+         },
+
+///////////////////////////////////////////////////////////////////////////////////////////////		 
+			
+============================ section and block id =================================================
+
+<section class="our-services abc-{{section.id}}">
+
+ .bg-{{section.id}}{
+    background-color:{{section.settings.sec-background}};
+  }
+  
+  background-color:{{block.settings.slide_bcolor}};
+  -------
+
+ {% for block in section.blocks %}
+<div class="service-card abc-{{block.id}}" style="background-color:{{block.settings.color_accent}}">
+
+ <style>
+       .abc-{{block.id}}{
+          text-align: {{ block.settings.content_aligment }};
+        }
+      </style>
+
+      {% endfor %}
+	  
+///////////////////////////////////////////////////////////////////////////////////
+
+============================= vertical align Select options =======================================
+align-items:{{ block.settings.box_vertical_alignment }};
+
+{
+          "type": "select",
+          "id": "box_vertical_alignment",
+          "label": "Vertical alignment",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "center"
+        }
+		
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+========================= overlap image text ===================================================================
+
+<section style="background: linear-gradient(transparent 60%, white 50% 100%), url({{ section.settings.back-image | img_url: 'master'}});">
+
+Or
+
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.30)), url({{ block.settings.back-image | img_url: '400x400'}});
+
+<div style="background:url({{ section.settings.back-image | img_url: 'master'}});">
+</div>
+{
+           "type": "image_picker",
+           "id": "back-image",
+           "label": "Background Image"
+         },
+		 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+========================== Product Slider Section |  Slick Slider | product in collection ===============================
+<div class="contain">
+  <div class="rowed">
+    <h2>{{ section.settings.heading }}</h2>
+   <div class="slide-contain">
+     <ul class="slide">
+       {% for product in collections [ section.settings.feature_collection ].products %}
+        <li class="slide-item">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: 'medium' }}"
+          </a>
+          <h3>{{ product.title }}</h3> 
+          <h4>{{ product.price | money }}</h4>
+        </li>
+       {% endfor %}
+     </ul>
+   </div>
+ </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "collection",
+        "id": "feature_collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Prodcut Slider"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+============================ js file link ===========================================
+
+ <script src="{{ 'mw-custom.js' | asset_url }}" defer="defer"></script>
+ 
+ <script src="{{ 'custom_mw.js' | asset_url }}" defer="defer"></script>
+ 
+ cdn link 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////
+ 
+ =================================Metafield bana ========================================
+ 
+ App and settings > Metafields > Product > Add definition 
+ name - 
+ +select content type
+ save
+ 
+ <div class="mw_breadcurmb">
+  {% if collection.metafields.custom.breadcrumb.value != blank %}
+    {{ collection.metafields.custom.breadcrumb.value }}
+  {% endif %}
+</div>
+ 
+ =====
+ file create=======
+ [{"title":"Alpemix","image":"Alpemix.jpg"},{"title":"Asya","image":"Asya.jpg"},{"title":"Bravo","image":"Bravo.jpg"},{"title":"Carmen","image":"Carmen.jpg"},{"title":"Cotton","image":"Cotton.jpg"},{"title":"Coventry","image":"Coventry.jpg"},{"title":"Crepe","image":"Crepe.jpg"},{"title":"Dolaro","image":"Dolaro.jpg"},{"title":"Drop","image":"Drop.jpg"},{"title":"Everest","image":"Everest.jpg"},{"title":"Force","image":"Force.jpg"},{"title":"Free","image":"Free.jpg"},{"title":"Gul_Simli","image":"Gul_Simli.jpg"},{"title":"Gul","image":"Gul.jpg"},{"title":"Hera","image":"Hera.jpg"},{"title":"Inka","image":"Inka.jpg"},{"title":"Irony","image":"Irony.jpg"},{"title":"irony260-1","image":"irony260-1.jpg"},{"title":"Istanbul","image":"Istanbul.jpg"},{"title":"Jean","image":"Jean.jpg"},{"title":"Labirent","image":"Labirent.jpg"},{"title":"Likya","image":"Likya.jpg"},{"title":"Lodos","image":"Lodos.jpg"},{"title":"Lotus","image":"Lotus.jpg"},{"title":"Milano","image":"Milano.jpg"},{"title":"Milas","image":"Milas.jpg"},{"title":"Mix","image":"Mix.jpg"},{"title":"Monte_Simli","image":"Monte_Simli.jpg"},{"title":"Monte","image":"Monte.jpg"},{"title":"Nica","image":"Nica.jpg"},{"title":"Pellenix","image":"Pellenix.jpg"},{"title":"Pitikare","image":"Pitikare.jpg"},{"title":"Punto_Kombin","image":"Punto_Kombin.jpg"},{"title":"Riva","image":"Riva.jpg"},{"title":"Rolax","image":"Rolax.jpg"},{"title":"Royal","image":"Royal.jpg"},{"title":"Timsah","image":"Timsah.jpg"},{"title":"Viva","image":"Viva.jpg"},{"title":"Zeugma","image":"Zeugma.jpg"}]
+================
+
+ //////////////////////////////////////////////////////////////////////////
+ 
+ ============= snippets add =============================== 
+ 
+ {% render 'demo' %}
+ 
+ 
+ /////////////////////////////////////////////////////////////
+ 
+ 
+ ================== placeholder image ========================================
+ 
+ {{- 'image' | placeholder_svg_tag: 'placeholder-svg-filled' -}}
+ 
+ ///////////////////////////////////////////////////////////////
+ 
+ ================== info =============================
+ 
+  {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1000x630 recommended"
+        },
+		
+		
+ /////////////////////////////////////////////////////////////
+ 
+ ============ Different Images For Mobile Than Desktop  ====================
+ 
+ 
+ {% if block.settings.image != blank %}
+                <img class="hidden_mobile"  src="{{ block.settings.image | img_url: 'master' }}" />
+            {% endif %}
+            
+            {% if block.settings.mobile_image != blank %}
+                <img class="hidden_desktop" src="{{ block.settings.mobile_image | img_url: 'master' }}" />
+              {% else %}
+                <img class="hidden_desktop" src="{{ block.settings.image | img_url: 'master'}}" /> 
+            {% endif %}
+ <style>
+		 .hidden_desktop{
+        display:block;
+      }
+      .hidden_mobile {
+        display: none;
+      }
+      @media (min-width:992px){
+        .hidden_desktop{
+          display:none;
+        }
+        .hidden_mobile {
+          display: block;
+        }
+      }
+ 
+ </style>
+ 
+ {
+"type": "image_picker",
+"id": "image",
+"label": "Banner Image"
+},
+{
+"type": "image_picker",
+"id": "mobile_image",
+"label": "Mobile Banner Image"
+},
+ 
+ ////////////////////////////////////////////////////
+ 
+ ================ section block default value placeholder =========
+ 
+"presets" : [
+{
+  "name" : "Call to Action Blocks",
+  "category" : "Call to Action Button",
+  "blocks": [
+  {
+    "type" : "select"
+  },
+  {
+    "type" : "select"
+  }
+]
+  }
+]
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+============================ Multiple block ========================================
+
+"blocks": [
+  {
+    "type": "button",
+    "name": "Button",
+    "settings": [
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }
+    ]
+  },
+  {
+    "type": "image",
+    "name": "Image slide",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+]
+
+----------------
+{% for block in section.blocks %}
+	{% case block.type %}
+		{% when 'social'%}
+	
+    {% endcase %}
+{% endfor %}
+----------------------
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+======================  font family upload shopify =====================
+ttf file > upload
+font family generate karni https://transfonter.org/
+font file > upload file vich
+file vich je ke link copy 
+src:url ""
+
+@font-face {
+    font-family: 'Kinfolk';
+    src: url('https://cdn.shopify.com/s/files/1/0582/4433/3777/files/KinfolkRegular.eot?v=1663051938'); 
+    src: url('https://cdn.shopify.com/s/files/1/0582/4433/3777/files/KinfolkRegular.eot?v=1663051938') format('embedded-opentype'),
+        url('https://cdn.shopify.com/s/files/1/0582/4433/3777/files/KinfolkRegular.woff2?v=1663051948') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0582/4433/3777/files/KinfolkRegular.woff?v=1663051938') format('woff'),
+        url('https://cdn.shopify.com/s/files/1/0582/4433/3777/files/KinfolkRegular.ttf?v=1663051938') format('truetype'),
+        url('https://cdn.shopify.com/s/files/1/0582/4433/3777/files/KinfolkRegular.svg?v=1663051938') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+=============== class show hide ========================
+
+{% if section.settings.slideshow_width != 'full' %}row{% endif %}
+
+ {
+    "type": "select",
+    "id": "slideshow_width",
+    "label": "Layout",
+    "options": [
+      {
+        "value": "full",
+        "label": "Full-width"
+      },
+      {
+        "value": "contained",
+        "label": "Contained"
+      }
+    ],
+    "default": "full"
+  },
+  
+  ///////////////////////////////////////////////////////////////
+  
+========================== payment icons hide= =========================
+ <div id="payment">
+          {% if section.settings.show_credit_cards %}
+            {% for type in shop.enabled_payment_types %}
+              {% assign type = 'jcb' | remove: ' ' | split: ',' %}
+              {{ type| payment_type_svg_tag: class:'payment-icon' }}
+            {% endfor %}
+          {% endif %}
+        </div>
+	
+/////////////////////////////////////////////////////////////////////////////////
+
+
+<!------ footer subscribe join button text change ---------------->
+
+You just need to replace the value "{{ 'general.newsletter_form.submit' | t }}" with "Get my discount"
+
+////////////////////////////////////////////////
+
+============ render snippets call =============
+
+ {% render 'collection-card', block: block, section: section, collection: collection, card_style: card_style, text_alignment:  section.settings.text_alignment, image: block.settings.item_image, show_product_count: section.settings.show_product_count, enable_slider: enable_slider, image_rounded: section.settings.image_rounded, hover_effect: section.settings.hover_effect, title: block.settings.title %}
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+ ==================== redirect link javascript ========================
+ 
+  if(document.querySelector("#submitBtn")){
+    document.querySelector("[value='/account']").setAttribute('value','/collections/wholesale');
+  }
+  
+/////////////////////////////////////////////////////////////////////////////////////
+
+========================= select option percentage ================================
+<div class="cus_logo_bar-{{section.id}}">
+
+</div>
+
+
+ .cus_logo_bar-{{section.id}}{
+    display: flex;
+    width:{{section.settings.logo_wd}}%;
+    margin: auto;
+  }
+
+
+{
+          "type": "select",              
+          "id": "logo_wd",             
+          "label": "Row width",  
+            "options": [
+                {
+                  "value": "100",
+                  "label": "100%"
+                },
+                {
+                  "value": "80",
+                   "label": "80%"
+                },                
+                {
+                  "value": "70",
+                  "label": "70%"
+                },
+                {
+                  "value": "60",
+                  "label": "60%"
+                },
+                {
+                  "value": "50",
+                  "label": "50%"
+                }
+              ]
+           },
+		   
+		   
+////////////////////////////////////////////////////////////////////
+
+=============== default value options ===========================
+
+{
+  "type": "text",
+  "id": "footer_linklist_title",
+  "label": "Heading",
+  "default": "Quick links"
+}
+
+{
+  "type": "richtext",
+  "id": "paragraph",
+  "label": "Paragraph",
+  "default": "<p>Quick links</p>"
+}
+
+
+//////////////////////////////////////////////
+
+============== text alignment select options =============
+
+  {
+        "type": "select",              
+        "id": "content_inner_list_align",             
+        "label": "Inner text alignment",  
+          "options": [
+              {
+                "value": "left",
+                 "label": "left"
+              },                
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ],
+            "default": "center"
+          }
+      }
+	  
+///////////////////////////////////////////////////////////////////	  
+
+================= product sale offer percentage ===============================
+
+{% assign saving = product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price | round %}
+      {% assign percentage = saving | at_least: percentage %}
+      {{percentage}}
+	  
+	  <div class="mw_pdp_offer">
+            <h4 class="cus_offer_head">CHRISTMAS SALE | 
+              {% assign saving = product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price | round %}
+      {% assign percentage = saving | at_least: percentage %}
+      {{percentage}}
+            </span>% OFF</h4>
+        </div>
+	  ---------------------------------------------------------------------
+	  
+	  <div class="card__badge mw_badge">
+          {%- if product_card_product.available == false -%}
+            <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}" aria-hidden="true">{{ 'products.product.sold_out' | t }}</span>
+          {%- elsif product_card_product.compare_at_price > product_card_product.price and product_card_product.available -%}
+            <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}" aria-hidden="true">{% assign saving = product_card_product.compare_at_price | minus: product_card_product.price | times: 100 | divided_by: product_card_product.compare_at_price | round %}
+            {% assign percentage = saving | at_least: percentage %}
+            {{percentage}}% OFF
+            {% comment %} {{ 'products.product.on_sale' | t }} {% endcomment %}
+          </span>
+          {%- endif -%}
+        </div>
+////////////////////////////////////////////////////////
+
+====================== when ===============================
+
+{%- for block in section.blocks -%}
+          {%- case block.type -%}
+		   {%- when 'description' -%}
+		    {%- when 'image_grid' -%}
+			 {%- endcase -%}
+     {%- endfor -%}
+	 
+	 
+{% schema %}
+{
+  "name": "t:sections.main-product.name",
+  "tag": "section",
+  "class": "product-section spaced-section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "name": "t:sections.main-product.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text block",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+      ]
+    },
+    {
+      "type": "title",
+      "name": "t:sections.main-product.blocks.title.name",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "t:sections.main-product.blocks.price.name",
+      "limit": 1
+    },
+  
+    {
+      "type": "custom_liquid",
+      "name": "t:sections.main-product.blocks.custom_liquid.name",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "t:sections.main-product.blocks.custom_liquid.settings.custom_liquid.label",
+          "info": "t:sections.main-product.blocks.custom_liquid.settings.custom_liquid.info"
+        }
+      ]
+    },
+ 
+      
+    {
+      "type": "image_grid",
+      "name": "Image grid",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_text2",
+          "label": "Icon text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image3",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_text3",
+          "label": "Icon text"
+        }
+       
+      ]
+    },
+    
+    {
+      "type": "rating",
+      "name": "t:sections.main-product.blocks.rating.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    }
+  ]
+}
+{% endschema %}
+	 ///////////////////////////////////////
+	 
+	 
+===========  cart page te remove option add karna ====================
+
+<a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove" title="{{ 'cart.general.remove' | t }}">Remove</a>
+
+////////////////////////////////////////////////////////////////////
+
+================ images swatches color =========================
+input vich
+{% assign swatchImg = value | downcase | replace: ' ', '-' | append: '.jpg' | file_img_url %}
+label vich
+style="background-image: url({{ swatchImg }})
+
+/////////////////////////////////////////////////////	 
+
+============ section top bottom padding options ==================
+
+section-{{ section.id }}-padding
+
+<style>
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+  { 
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Padding top",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Padding bottom",
+          "default": 52
+        }
+		
+		
+/////////////////////////////////////////////////////////////////		
+
+========================= theme liquid file vich =================
+
+{% if template.suffix  == 'shipping-and-reurns' or template.name  == 'login' or template.suffix  == 'faq-final' %}
+    <style>
+        .transparent-on-top img.inline-block.lazyautosizes.lazyloaded, .transparent-on-top img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {
+            filter: unset;
+        }
+        .header__22 .transparent-on-top header .sf-menu-logo-bar ul.sf-nav li a {
+            color: #041e3a;
+        }
+        .header__22:not(.stuck) .icon-fill-serch {
+            stroke: #000;
+        }
+        .header__22:not(.stuck) .icon-fill-cart {
+            filter: unset;
+        }
+        .header__22 .icon-fill {
+            fill: #000;
+        }
+        .cus-hdr .mobile____menu, .mob-logo-container img {
+            filter: unset;
+        }
+        .cus-margin-top{
+          margin-top:0;
+        }
+        @media only screen and (min-width: 768px) {
+        .flexd-sec {
+            padding-top: 90px;
+        }
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px){
+.header__22:not(.stuck) .icon-fill-cart {
+    filter: unset !important;
+}
+    </style>
+{% endif %}
+    
+	
+////////////////////////////////////////////////////
+
+============= mw copyright content ===========
+| Designed and Developed by Miracle Websoft
+
+////////////////////////////////////////////////////
+
+============ font family asset mein file upload kar k ===========
+
+/* Define the Nexa font family */
+@font-face {
+  font-family: 'Nexa';
+  src: url('NexaRustSans-Trial-Black2.ttf') format('truetype');
+  /* Add other font formats (e.g., woff, woff2) for cross-browser support */
+}
+
+/* Apply the Nexa font family to specific elements */
+body {
+  font-family: 'Nexa', sans-serif !important; /* Fallback to a default sans-serif font */
+}
+
+/* Example: Change the font family for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nexa', sans-serif !important;
+}
+
+/* Example: Change the font family for a specific class */
+.custom-font-text {
+  font-family: 'Nexa', sans-serif;
+}
+
+
+=====================================================================
+
+============== compare price =========================
+<div class="product-price">
+      {% if product.compare_at_price != blank %}
+        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+        <span style="text-decoration: line-through;">{{ product.price | money }}</span>
+      {% else %}
+      {{ product.price | money }}
+    {% endif %}
+    </div>
+	
+	///////////////////////////////////////////////////

@@ -1,0 +1,1830 @@
+https://websensepro.com/blog/how-to-show-only-selected-variant-images-shopify-dawn-theme/
+===========================================================
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+==============================================
+
+{{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+
+<!---Shopify Schema With presets-->
+
+	{% schema %}
+
+	{
+	"name": "Mw Test",          
+	"settings": [
+	{
+	"type":"image_picker",
+	"id":"grid-box",
+	"label":"Grid Image"
+	}
+
+	],
+	
+	"presets": [{
+	"name": "mw",
+	"category": "Content"
+	}
+	]
+
+	}
+
+	{% endschema %}
+
+<!---end Shopify Schema With presets-->
+
+<!----------if block lie------------------>
+	<div class="grid-box">
+		{% for block in section.blocks %}
+		<div class="box-one">
+			<div class="grid-content">
+				{% if block.settings.image != blank %} खाली नहीं है (या खाली नहीं है)
+				{{ block.settings.image | img_url: 'medium' | img_tag }}
+				{% endif %}
+			</div>
+			<div class="description">
+				<h3>
+					{% if block.settings.column-heading != blank %}
+					{{block.settings.column-heading}}
+					{% endif %}
+				</h3>
+				<p>
+					{% if block.settings.para != blank %}
+					{{block.settings.para}}
+					{% endif %}
+				</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+<!----------end if block lie------------------>
+
+<!------if loop------>
+
+	<h2>
+		{% if section.settings.title != blank %}
+		{{section.settings.title}}
+		{% endif %}
+	</h2>
+
+<!------end if loop------>
+
+<!---------if image lie-------------->
+	<div class="pic">
+		{% if section.settings.pic != blank %}
+		{{ section.settings.pic | img_url: 'master' | img_tag }}
+		or 
+		<img src="{{ section.settings.pic | img_url: 'small'}}">
+		{% endif %}
+	</div>
+<!---------end if image lie-------------->
+
+<!-------------if or conditions ------->
+
+ {% if section.settings.caro != blank or section.settings.customer != blank or section.settings.para != blank or section.settings.media %} 
+ 
+
+<!-------------end if or conditions ------->
+
+<!-------------if and conditions ------->
+{% if product.type != "A" and product.type != "B" and product.type != "C" %}
+    //do something
+{% endif %}
+
+<!-------------end if and conditions ------->
+
+<!----Blocks----->
+	{% schema %}
+	{
+	"name": "Images With Grid",
+	"settings": [
+	{
+	"type":"text",
+	"id":"heading",
+	"label":"Section Heading"
+	}
+
+	],
+	"blocks": [
+	{
+	"name": "Grid Column",
+	"type": "slide",
+	"settings": [
+	{
+	"type": "image_picker",
+	"id": "image",
+	"label": "Image"
+	},
+	{
+	"type":"text",
+	"id":"column-heading",
+	"label":"Column Heading"
+	},
+	{
+	"type":"text",
+	"id":"para",
+	"label":"Description"
+	}
+	]
+	}
+
+	],
+	"presets": [
+	{
+	"name": "Images With Grid",
+	"category": "Content"
+	}
+	]
+	}
+	{% endschema %}
+
+<!----end Blocks----->
+
+
+
+
+<!-------------Type---------------->
+  <!------background-color lie----------->
+   <div class="carousel" style="background-color:{{section.settings.color_accent}}">
+   or 
+   <div class="carousel" style="background-color:{{block.settings.color_accent}}">
+    {
+          "type": "color",
+          "id": "color_accent",
+          "label": "Background color",
+          "default": "#FFFFFF"
+    },
+	<!------background-color lie----------->
+	{
+	"type":"text",
+	"id":"para",
+	"label":"paragraph"
+
+	}
+	
+	<!-------image size ---------->
+	pico	16 X 16
+	icon	32 X 32
+	thumb	50 X 50
+	small	100 X 100
+	compact	160 X 160
+	medium	240 X 240
+	large	480 X 480
+	grande	600 X 600
+	1024 X 1024	1024 X 1024
+	2048 X 2048	2048 X 2048
+	master	largest image
+	<!-------end image size ---------->
+	
+	
+	
+	<!--------footer add menu ----------->
+	{%- if linklists[block.settings.menu-2].links.size > 0 -%}
+            <div class="site-footer__section">
+              <ul class="footer-menu">
+                {%- for link in linklists[block.settings.menu-2].links -%}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+	 "blocks": [
+	{
+	"name": "Footer grid",
+	"type": "slide",
+	"settings": [
+	
+		{
+		  "type": "link_list",
+		  "id": "menu-2",
+		  "label": "t:sections.footer.settings.menu.label",
+		  "default": "footer",
+		  "info": "t:sections.footer.settings.menu.info"
+		}
+		]
+		}
+		],
+	
+	<!--------footer add menu ----------->
+	
+	
+	
+	link in linklists[block.settings.menu-2].links
+	
+	
+	
+	<ul>
+  {% for link in linklists.main-menu.links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+  {% endfor %}
+</ul>
+
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+============================Checkbox option===========================
+
+{%- if section.settings.showconten -%}
+     Show content
+{% else %}
+     Hide content
+{%- endif -%}
+   
+{% schema %}
+
+	{
+      "name": "checkbox option",          
+      "settings": [
+	        {
+            "type": "checkbox",
+            "id": "showconten",
+            "label": "Show content",
+            "default": true
+	        }
+	  ],
+    "presets": [{
+      "name": "Checkbox option"
+	        }
+	  ]
+	}
+
+	{% endschema %}
+	
+	
+===========================end checkbox option==============================	
+{
+  "type":"select",
+  "id": "text_position",
+  "label": "Position your text",
+  "options":[
+      { "value": "left", 
+	    "label": "left"
+	  },
+   ]
+ 
+}
+
+============================ Add to card =================================
+
+<form method="post" action="/cart/add">
+
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+
+  <input min="1" type="number" id="quantity" name="quantity" value="1"/>  
+
+  <input type="submit" value="Add to cart" class="btn" />
+
+</form>
+
+-------------------------------------or--------------------------------------
+
+<button type="submit" {% unless product.available %} disabled="disabled"{% endunless %}>
+                    {%- if product.available -%}
+                      Add to Cart
+                    {%- else -%}
+                      Sold Out
+                    {%- endif -%}
+</
+>
+
+===================Select options==================================================
+
+{% if section.settings.grid_alignment == 'right'%}
+
+{
+            "type": "select",
+            "id": "grid_alignment",
+            "label": "Grid alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          }, 
+
+=================== End Select options ======================================
+
+====================Range=========================================
+
+            <div class="contant_heading">
+                <h2 style="font-size:{{ section.settings.font_size }}px;">{{ section.settings.paralex-heading }}</h2>
+            </div>
+
+{
+            "type": "range",
+            "id": "font_size",
+            "min": 12,
+            "max": 100,
+            "step": 2,  
+            "unit": "px",
+            "label": "Font size",  
+            "default": 20
+        },
+
+=====================End Range===================================================
+
+==================Background color===================================================
+
+<div class="contant_with_media" style="background:{{section.settings.color_accent}};">
+
+ {
+            "type": "color_background",
+            "id": "color_accent",
+            "label": "Background color",
+            "default": "#FFFFFF"
+        },
+		
+==================End Background color===================================================		
+
+======================= css file call karni=======================
+
+layout > theme.liquid 
+
+ <link rel="stylesheet" href="{{ 'custom_mw.css' | asset_url }}">
+ 
+ =======================End css file call karni=======================
+ 
+ ========================= json template ======================
+ template te ja ke "Select a template to create" page select kr lo te niche json select kr lo fir niche ala code paste 
+ kr do 
+ 
+ 
+ {
+  "sections": {
+    "main": {
+      "type": "gallery"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
+
+or
+
+
+
+ ========================= \ json template ======================
+ 
+ <div style="background-color:{{block.settings.color_accent}}">
+
+{
+  "type": "color",
+  "id": "color_accent",
+  "label": "Buttons color",
+  "default": "#FFFFFF"
+}
+
+
+style="background:{{ section.settings.color_accent}};">
+
+{
+      "type": "color_background",
+      "id": "color_accent",
+      "label": "Background-color",
+      "default": "ffffff"
+    },
+	---------------------------------------------
+	
+	------------- json code -------------------------------------------
+	{
+  "faq": [
+    {
+      "heading": "What is Rugged Twill fabric?",
+      "desc": "Rugged Twill is a very dense, almost canvas type material made from cotton yarns.  We've chosen this fabric because it's super tough and it looks great.  It's the type of fabric that breaks in and softens with use over time, at first it will be a bit more stiff, but with use the material becomes slightly softer."
+    },
+    {
+      "heading": "Does Rugged Twill fabric wear?",
+      "desc": "Yes it does, just like all fabric it wears over time, especially when used out in the field - we expect that.  Just like a pair of hiking boots it will develop scuffs, nicks and scratches and this will show on the bag.  Think of these marks as a badges of honour on your bag."
+    },
+    {
+      "heading": "Is this bag waterproof?",
+      "desc": "We apply a water resistant coating to the Rugged Twill fabric.  If the bag is closed up, your gear will stay dry in all but the most intense rain and snow."
+    },
+    {
+      "heading": "Can I use this as an everyday backpack?",
+      "desc": "Yes, just remove the camera cube and unzip the internal divider to transform the Weekender into an every day backpack."
+    },
+    {
+      "heading": "Will the bottom compartment / camera cube fit a drone?",
+      "desc": "Yes, the customizable inserts can be modified to accommodate a small to medium size drone."
+    }
+  ]
+}
+========================================================================
+
+================== Range padding options ===============
+{% style %}
+
+{% if section.settings.sapce != blank %}
+      #shopify-section-{{ section.id }} .how-it-work-section{
+          padding:{{section.settings.sapce}}px 0px;
+      }
+{% endif %}
+  
+{% endstyle %}
+
+{
+            "type": "range",
+            "id": "sapce",
+            "min": 0,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "label": "Space",
+            "default": 20
+         },
+		
+========================================================
+
+=================== class add =================================
+
+<section class="global__section {{ section.settings.custom_class }}">
+
+</section>
+
+  {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    },
+	
+==============================================================================
+
+========================= font size ================================
+
+ #shopify-section-{{ section.id }} .gallery__item .gallery__item-container h3 {
+      font-size: {{ section.settings.promo_size }}px;
+    }
+	
+	 {
+      "type": "range",
+      "id": "promo_size",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 22
+    },
+	
+============================================================================== 
+
+======================theme kit ===========================
+  app> theme kit install > username --karamsingh email---reach.karamsingh@gmail.com
+
+theme download
+theme watch --allow-live
+
+
+//////////////////////////////////////////
+
+=================== snnipt call ======================
+
+{% include 'custom-code' %}
+
+{% render 'snippet name' %}
+
+////////////////////////////////////////////
+
+///////// css class ///////////////////////
+{{ 'icons.css' | asset_url | stylesheet_tag }}
+//////////////////////////////////////////////
+
+
+<div class="collection-page" data-section-id="{{ section.id }}" data-section-type="collection-section">
+  {% if collection.image   != blank %}
+  <div class="background-mani-banner" style= "background:url({{ collection.image | img_url: 'master' }})">
+      <h2 class="banner-text">{{ section.settings.banner-heading }}</h2>
+      {% else %} 
+      {% if section.settings.back-image !=blank%}      
+        <img src=" {{ section.settings.back-image | img_url: 'master'}}">
+      {% endif%}
+  {% endif %}
+</div>
+
+===========================================
+
+section-width--{{section.id}}
+
+ {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "sec_width",
+          "label": "Section width",
+          "min": 990,
+          "max": 1920,
+          "default": 1320,
+          "step": 10,
+          "unit": "px"
+        }
+		
+		<style>
+  {% if section.settings.full_width == blank %}
+    @media only screen and (min-width: 992px){
+      .section-width--{{section.id}}{
+        max-width: {{ section.settings.sec_width }}px;
+        margin: 0 auto;
+      }
+    }
+  {% endif %}
+</style>
+
+//////////////////////////////////////////////////////
+
+{% if section.settings.full_width == blank %} jekr khali hai
+/////////////////////////////////////////////
+
+
+
+============== contains page.handle  =====================================
+
+<div class="mw_slider cus_sticky_wd">
+  {% for block in section.blocks %}
+    <div class="cus_slider_title {%if block.settings.heading_link contains page.handle %} active-page{%endif%}" style="width:20%;">
+      <a href="{{block.settings.heading_link}}">{{ block.settings.slide-heading }}</a>
+    </div>
+  {% endfor %}
+</div>
+<style>
+.cus_slider_title.active-page a{ 
+    color: #041e3a;
+	font-weight: bold;
+ }
+</style>
+///////////////////////////////////////////////////////////////////////////
+
+================== metafield conditions ===================================
+
+ {% if product.metafields.custom.show_receive_date == true %} --, product.metafields.custom.show_receive_date, a metafield te inspact kr k utha lo
+                      <div class="receive_product">
+                        <div class="content_of_recive_product">
+                          <p>Enter date you would like to receive your shamrock before (optional)</p>
+                        </div>
+                        <div class="date_input_part">
+                          <input id="recive_produc" type="date" name="properties[receive your product]">
+                        </div>
+                        </div>  
+                      {% endif %}
+					  --------------------- image veste --------------------------------
+					   {% if product.metafields.custom.difficulty_to_grow != blank %}
+                <img src="{{ product.metafields.custom.difficulty_to_grow | img_url: '80x' }}" alt="{{ product.metafields.custom.difficulty_to_grow.alt }}" style="position: absolute;right: 0;">
+              {% endif %}
+					 
+-----------------------------multiple images show karwan veste metafield vich--------------------------------------------
+{% assign array_of_badges = product.metafields.custom.multi_image.value %}
+{% if array_of_badges %}
+ {% for multi_image in array_of_badges %}
+  <img src="{{ multi_image | image_url }}">
+ {% endfor %}
+{% endif %}
+
+					 
+					  
+ ////////////////////////////////////////////////////////////////////	
+
+
+============ icon lago veste ==============
+
+  <span class="Faq__Icon">{% render 'icon' with 'plus' %}</span>
+
+
+ {%- when 'plus' -%}
+    <svg class="{{ icon_class }}" role="presentation" viewBox="0 0 16 16">
+      <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <path d="M8,1 L8,15"></path>
+        <path d="M1,8 L15,8"></path>
+      </g>
+    </svg>
+
+//////////////////////////////////////////////////////////////////	
+
+============= product page mein price se common hatna ========================
+
+ <span class="ProductMeta__Price Price Text--subdued u-h4">{{ product.selected_or_first_available_variant.price | money | remove: "," }}</span>
+ 
+ 
+ filter add karna money to badd | remove: "," aah paste karna
+ ///////////////////////////////////////////////////////////////////////////
+ 
+ ================= custom breadcrumb lagwan veste ===============================
+ <div class="mw_breadcrumbs">
+  <a href="/" class="cus_anchor">Home</a>
+  <span class="cus_separator">/</span>
+  <a href="/collections" class="cus_anchor">Categories</a>
+  {% if product.collections.size > 0 %}
+    {% assign collection = product.collections.first %}
+    <span class="cus_separator">/</span>
+    <a href="/collections/{{ collection.handle }}" class="cus_anchor">{{ collection.title }}</a>
+  {% endif %}
+  <span class="cus_separator">/</span>
+  <span style="font-weight:700; color:#373737;">{{ product.title }}</span>
+</div>
+
+ ================================2 code===============================================
+ <style>
+  .breadcrumbs {
+    margin: 0 0 2em;
+  }
+
+  .breadcrumbs__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs__item {
+    display: inline-block;
+  }
+
+  .breadcrumbs__item:not(:last-child):after {
+    border-style: solid;
+    border-width: .10em .10em 0 0;
+    content: '';
+    display: inline-block;
+    height: .20em;
+    margin: 0 .20em;
+    position: relative;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    width: .20em;
+  }
+
+  .breadcrumbs__link {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs__link[aria-current="page"] {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .breadcrumbs__link[aria-current="page"]:hover,
+  .breadcrumbs__link[aria-current="page"]:focus {
+    text-decoration: underline;
+  }
+</style>
+
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+{%- assign t = template | split: '.' | first -%}
+
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a class="breadcrumbs__link" href="/">Home</a>
+    </li>
+    {%- case t -%}
+      {%- when 'page' -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+        </li>
+      {%- when 'product' -%}
+        {%- if collection.url -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+        {%- endif -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+        </li>
+      {%- when 'collection' and collection.handle -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'blog' -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ blog.title | link_to: blog.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'article' -%}
+        <li class="breadcrumbs__item">
+          {{ blog.title | link_to: blog.url }}
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+        </li>
+      {%- else -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+        </li>
+    {%- endcase -%}
+  </ol>
+</nav>
+{%- endunless -%}
+ 
+ //////////////////////////////////////////////
+ 
+ ============== show hide js ===========================
+ 
+ <script>
+		const faqQuestions = document.querySelectorAll('.faq-question');
+
+		faqQuestions.forEach(question => {
+			question.addEventListener('click', () => {
+				question.nextElementSibling.classList.toggle('show');
+			});
+		});
+	</script>
+	
+	<style>
+	.faq-answer {
+    display: none;
+}
+.faq-answer.show {
+    display: block;
+    margin-top: 10px;
+}
+	
+	</style>
+	
+	
+	==================================================
+	
+	==================== metafield conditions lagano veste =========================
+	<div class="mw_gallery">
+  {% if product.metafields.custom.multi_image.value != blank %}
+      <h2 class="h3 cus_text_center">{{section.settings.heading}}</h2>
+  {% endif %}
+</div>
+---------------------------------------------------
+This shop will be powered by {{ shopify }}
+
+
+===================== Breadcurmb code ==============================
+
+<style>
+  .breadcrumbs {
+    margin: 0 0 2em;
+  }
+
+  .breadcrumbs__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs__item {
+    display: inline-block;
+  }
+
+  .breadcrumbs__item:not(:last-child):after {
+    border-style: solid;
+    border-width: .10em .10em 0 0;
+    content: '';
+    display: inline-block;
+    height: .20em;
+    margin: 0 .20em;
+    position: relative;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    width: .20em;
+  }
+
+  .breadcrumbs__link {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs__link[aria-current="page"] {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .breadcrumbs__link[aria-current="page"]:hover,
+  .breadcrumbs__link[aria-current="page"]:focus {
+    text-decoration: underline;
+  }
+</style>
+
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+{%- assign t = template | split: '.' | first -%}
+
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a class="breadcrumbs__link" href="/">Home</a>
+    </li>
+    {%- case t -%}
+      {%- when 'page' -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+        </li>
+      {%- when 'product' -%}
+        {%- if collection.url -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+        {%- endif -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+        </li>
+      {%- when 'collection' and collection.handle -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'blog' -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ blog.title | link_to: blog.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'article' -%}
+        <li class="breadcrumbs__item">
+          {{ blog.title | link_to: blog.url }}
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+        </li>
+      {%- else -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+        </li>
+    {%- endcase -%}
+  </ol>
+</nav>
+{%- endunless -%}
+==================================== breadcurmbs 2 ===========================================================
+<style>
+
+
+  .breadcrumbs__item {
+    display: inline-block;
+  }
+
+  .breadcrumbs__item:not(:last-child):after {
+    border-style: solid;
+    border-width: .10em .10em 0 0;
+    content: '';
+    display: inline-block;
+    height: .20em;
+    margin: 0 .20em;
+    position: relative;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    width: .20em;
+  }
+
+  .breadcrumbs__link {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs__link[aria-current="page"] {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .breadcrumbs__link[aria-current="page"]:hover,
+  .breadcrumbs__link[aria-current="page"]:focus {
+    text-decoration: underline;
+  }
+</style>
+
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+{%- assign t = template | split: '.' | first -%}
+
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a class="breadcrumbs__link" href="/">Home</a> |
+    </li>
+    {%- case t -%}
+      {%- when 'page' -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+        </li>
+      {%- when 'product' -%}
+        {%- if collection.url -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+        {%- endif -%}
+        
+        {% if product.collections.size > 0 %}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ product.collections[2].url }}" aria-current="page">{{ product.collections[2].title }}</a> |
+          </li>
+        {% endif %}
+
+        {% if product.collections.size > 0 %}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ product.collections[3].url }}" aria-current="page">{{ product.collections[3].title }}</a> |
+          </li>
+        {% endif %}
+
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+        </li>
+      {%- when 'collection' and collection.handle -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ collection.title | link_to: collection.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'blog' -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ blog.title | link_to: blog.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'article' -%}
+        <li class="breadcrumbs__item">
+          {{ blog.title | link_to: blog.url }}
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+        </li>
+      {%- else -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+        </li>
+    {%- endcase -%}
+  </ol>
+</nav>
+{%- endunless -%}
+=============================================================================================
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+===================== discount ki jagah percentage likhna ==============================
+{{ product.compare_at_price_max | minus: product.price_max | times: 100 | divided_by: product.compare_at_price_max | round }}% off
+
+//////////////////////////////////////////////////////////////////////////////////
+
+========= home page te chalan veste conditions ============
+{% if template == 'index' %}
+
+{% endif %}
+
+////////////////////////////////////////////////////
+
+============== ek section multi templates te lagana ============================
+
+{% schema %}
+    {
+        "name": "Ugc",
+        "settings": [
+            {
+			  "type": "image_picker",	
+              "id": "badge-img2",
+              "label":"Badge Image"	
+			}
+        ],
+        "presets":[
+            {
+            "name": "ugc"
+            }
+        ],
+        "enabled_on": {
+        "templates": ["product"],
+        "groups": ["footer"]
+        }
+    }
+{% endschema %}
+
+//////////////////////////////////////////////////////////
+
+===================== add to cart sticky banao veste  jquery ================
+
+<script>
+ $(window).scroll(function(){
+   if($(this).scrollTop() > 200) {
+    $('.product-form_buttons').addClass('afix');
+   }else{
+     $('.product-form_buttons').removeClass('afix');
+	 }
+	 });
+</script>
+<style>
+.product-form_buttons.afix{
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  background:#ccc;
+  padding:10px;
+  width:100%;
+  z-index:999;
+}
+.product-form_buttons.afix .shopify-payment-button {
+  display:none;
+}
+</style>
+////////////////////////
+======================= Shopify Product Tags | How to Add New Arrivals and Best Seller Tag | ================
+ ============== How to Add Custom Product Tag ==============================
+ {% for tag in product.tags %}
+   {{ tags }}
+ {% endfor %}
+ 
+  {% for tag in product.tags %}
+   {% if tag contains "New Arrivals" %}
+     <span class="cus_sale-tags"> {{ tag }} </span>
+	 { % endif %}
+   {{ tags }}
+ {% endfor %}
+ <style>
+  .cus_sale-tags {
+    Background: #56b706;
+	padding: 4px 6px;
+	color: #fff;
+	position: relative;
+  }
+  .cus_sale-tags::after {
+    content: "";
+	border-top: 15px solid #bcb8b800;
+	border-right: 15px solid #ccc0;
+	border-bottom: 15px solid #ccc0;
+	border-left: 22px solid #56b706;
+	position: absolute;
+	top: 0px;
+	right: -37px;
+  }
+ </style>
+============= Array in liquid programming =======================
+
+
+<h2>Array </h2>
+{% assign name = "Anil, Vishal, Ravi, Pankaj" | split: ", " %}
+{{ name | join: "and" }}
+
+<!-- {% for item in name %}
+<li>{{ item }} </li>
+{% endfor %}
+-->
+
+<!--- Reverse --->
+
+ {% comment %}
+ {% assign name = "Pankaj, Sumit, Ravi, Deepak" | split: ", " %}
+ {{ name | reverse | join: "," }}
+ {% endcomment %}
+ 
+ <!--- sort --->
+ {% comment %}
+ {% assign name = "Pankaj, Sumit, Ravi, Deepak" | split: ", " %}
+ {{ name | sort | join: "," }}
+ {% endcomment %}
+ 
+ <!--- size --->
+ 
+ {% comment %}
+ {% assign name = "Pankaj, Sumit, Ravi, Deepak" | split: ", " %}
+ {{ name.size }}
+ {% endcomment %}
+ 
+ ---------
+ 
+ {% assign name = "vikas, anil, ravi, vishal, ravi, vikas" | split: ", " %}
+ {{ name | uniq | join: ", "}}
+ 
+ {% assign name = "vikas, anil, ravi, vishal, ravi, vikas" | split: ", " %}
+ {{ name age = "12, 34, 25, 26, 21, 23" | split: ", "}}
+ 
+ {% assign result = name | concat: age %}
+ 
+ {% for item in result %}
+ <li>{{ item }} </li>
+ {% endfor %}
+ 
+ //////////////////////////////////////////////////////////////////
+ 
+ ============= Filter :   Append and prepend filter ===========
+ 
+ <!-- filter veste | pipe sign da use karna -->
+ 
+ {% assign text = "This is element" %}
+ {{ text | append: ",right text" }}
+ 
+ {% assign title = page_title %}
+ {{ title | append: ",right text" }}
+ 
+ {% assign url = "/my/about" %}
+ {{ url | append: ".html" }}
+ 
+ ------ prepend ------------
+ 
+ {% assign url = "/my/about" %}
+ {{ url | prepend: ".html" }}
+ 
+ {% assign url = "silverhints.com" %}
+ {{ "/index.html" | prepend: url }}
+ 
+ ////////////////////////////////////////////////////////////////////
+ 
+ ============= Slice Filter =====================
+ 
+ {% assign text = "Liquidprogramming" %}
+ 
+ {{ text | slice 2, 4 }}
+ 
+ {% assign name = "Ravi, Pankaj, Vidon, Rakesh, Deepak" | split: ", " %}
+ 
+ {{ name | slice: 1, 3 | join: ", " }}
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ 
+ =============== Remove and Replace filter ======================
+ 
+ {% assign text = "what is lorem ipsum sit a dolor lorem ipsum is dummy." %}
+ 
+ {{ text | remove: "lorem" }}
+			or
+ {{ text | remove_first: "lorem" }}
+			or
+ {{ text | remove_last: "lorem" }}
+ 
+ ----------------- replace filter -------------------
+ 
+  {% assign text = "what is lorem ipsum sit a dolor lorem ipsum is dummy." %}
+ 
+ {{ text | replace: "lorem", "dummy" }}
+			or
+ {{ text | replace_first: "lorem", "dummy"  }}
+			or
+ {{ text | replace_last: "lorem", "dummy" }} 
+ 
+ ////////////////////////////////////
+ 
+ =========== filter Strip and Truncate ========================
+ 
+ <!-- {% assign text = "   hello how are you! " %}
+ 
+ <p>shopify{{ text | strip }} </p> -->
+ 
+  <!--  {% assign text = "   hello <i>how</li> <b>are you</b> " %}
+ 
+ <p>shopify{{ text | strip_html }} </p> -->
+ 
+   <!-- {% assign text = " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. " %}
+ 
+ <p>shopify{{ text | truncate: 20 }} </p> -->
+ 
+  <!-- {% assign text = " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. " %}
+ 
+ <p>shopify{{ text | truncate: 20, "" }} </p> -->
+ 
+  <!-- {% assign text = " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. " %}
+ 
+ <p>shopify{{ text | truncatewords: 2 }} </p> -->
+ 
+ <!-- {% assign text = " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. " %}
+ 
+ <p>shopify{{ text | truncatewords: 2, "" }} </p> -->
+ 
+ ////////////////////////////////////////////////////////
+ 
+  {% if product.variants[forloop.index0].image != blank %}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" style="background-image: url ( {{product.variants[forloop.index0].image | img_url: ''}} );">
+    </label>
+      {% else %}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+      {{ value -}}ok
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+  {% endif %}
+  
+  
+  ///////////////////////////////////
+  
+  ============ code for swatches ======================
+  {% assign swatchImg = value | uppercase | replace: ' ', '_' | append: '.png' | file_url %}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" style="background-image:url('{{ swatchImg }}');">
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+	-----------------------------
+	
+	{% if option.name == 'Size' %}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+      {{ value -}}
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+    {% else %}
+    {% assign swatchImg = value | uppercase | replace: ' ', '_' | append: '.png' | file_url %}
+    <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" style="background-image:url('{{ swatchImg }}');">
+      <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+    </label>
+    {% endif %}
+	
+	//////////////////////////////////////////////////////
+	
+	
+=========================== featured collection color ======================
+	<div class="collect_prd_swatches">
+              {%- for option in card_product.options_with_values -%}
+                {% if option.name == 'Color' %}
+                  {%- for value in option.values -%}
+                    {% assign swatchImg = value | uppercase | replace: ' ', '_' | append: '.png' | file_url %}
+                    <span style="background-image: url({{swatchImg}});"></span>
+                  {%- endfor -%}
+                {% endif %}
+              {%- endfor -%}
+            </div>
+			
+			----------------------------------
+			<div class="collect_prd_swatches">
+              {%- for option in card_product.options_with_values -%}
+                {% if option.name == 'Color' %}
+                  {%- for value in option.values -%}
+                    {% assign swatchImg = value | uppercase | replace: ' ', '_' | append: '.png' | file_url %}
+                    <span style="background-image: url({{swatchImg}});"></span>
+                  {%- endfor -%}
+                {% endif %}
+              {%- endfor -%}
+            </div>
+///////////////////////////////////////////////////////////
+
+
+================== metafield value fetch spacific page ( spacfic collection ) ===============================
+
+<div class="custom-meta-data">
+        {% for collection in product.collections %}
+          {% assign pro_value = " " %}
+          {% if collection.metafields.custom.mycollection != blank %}
+            {% assign pro_value = collection.metafields.custom.mycollection %}
+            {% break %}
+          {% endif %}
+          {% endfor %}
+            {% if pro_value != " " %}
+              <p class="meta-value">{{ pro_value }}</p>
+            {% endif %}
+      </div>
+	  
+	  ////////////////////////////////////////
+	  
+================== add to cart button collection page ajex ===================
+{% if product.available %}
+<div class="collection-cart">
+    {% for variant in product.variants %}
+        <input type="hidden" id="variantid" value="{{ variant.id }}">
+    {% endfor %}
+    <button class="Cart-btn" type="button" id="collection-cart{{ product.id }}">Add To Cart</button>
+  </div>
+  {% else %}
+  <button class="Cart-btn" type="button" style="background-color: red; color:white">Sold Out</button>
+{% endif %}
+  <script>
+  function addOrUpdate(url, method, formobj) {
+        $.ajax({
+            type: method,
+            url: url,
+            cashe: false,
+            data : formobj,
+            dataType : "json",
+            success:function(data){
+                console.log('success');
+                $('cart-drawer').removeClass('is-empty');
+                $('.drawer__inner-empty').hide();
+                $('cart-drawer').load(location.href + " #CartDrawer" );
+                $('#cart-icon-bubble').load(location.href + " #cart-icon-bubble" );
+                $('.drawer').addClass('active');
+            },
+            Error:function(xhr, ajaxOption, thrownError){
+                console.log('Error');
+            }
+        });
+  }
+    $(document).on('click','#collection-cart{{ product.id }}', function(){
+        let getvariantid = $(this).parents('.collection-cart').find('#variantid').val();
+        let formobj = {
+            quantity : 1,
+            id : getvariantid
+        };
+        addOrUpdate("/cart/add.js","POST", formobj)
+    });
+  </script>
+  
+  /////////////////////////////////////////////////////
+  
+  ====================== metafield richtext =========================
+  
+     <input type="checkbox" id="chicken-checkbox">
+            <label for="chicken-checkbox" class="menu-item">{{ product.metafields.custom.description_tab1 | metafield_tag | split: '<h4>' | last | split: '</h4>' | first | strip_html }}</label>
+            <div class="description">
+              {{ product.metafields.custom.description_tab1 | metafield_tag }}
+            </div>
+
+            <input type="checkbox" id="beef-checkbox">
+            <label for="beef-checkbox" class="menu-item">{{ product.metafields.custom.description_tab2 | metafield_tag | split: '<h4>' | last | split: '</h4>' | first | strip_html }}</label>
+            <div class="description">
+              {{ product.metafields.custom.description_tab1 | metafield_tag }}
+            </div>
+			
+			
+			
+			////////////////////////////////////////////////////
+			
+=========================== metafield tab options product page ===================
+ {% if product.metafields.custom.description_tab1 != blank or product.metafields.custom.description_tab2 != blank%}
+    <div class="mw_tabset">
+      <!-- Tab 1 -->
+      {% if product.metafields.custom.description_tab1 != blank %}
+        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1">{{ product.metafields.custom.description_tab1 | metafield_tag | split: '<h4>' | last | split: '</h4>' | first | strip_html }}</label>
+      {% endif %}
+      <!-- Tab 2 -->
+      {% if product.metafields.custom.description_tab2 != blank %}
+    <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" {% if product.metafields.custom.description_tab1 == blank or product.metafields.custom.description_tab2 != blank%}checked{% endif %}>
+      <label for="tab2">{{ product.metafields.custom.description_tab2 | metafield_tag | split: '<h4>' | last | split: '</h4>' | first | strip_html }}</label>
+    {% endif %}
+      
+      <div class="tab-panels">
+        {% if product.metafields.custom.description_tab1 != blank %}
+        <section id="marzen" class="tab-panel">
+          {{ product.metafields.custom.description_tab1 | metafield_tag }}
+      </section>
+    {% endif %}
+      {% if product.metafields.custom.description_tab2 != blank %}
+        <section id="rauchbier" class="tab-panel">
+          {{ product.metafields.custom.description_tab2 | metafield_tag }}
+        </section>
+      {% endif %}
+      </div>
+  </div>
+              
+          {% endif %} 
+  
+  <style>
+  .mw_tabset > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
+}
+.mw_tabset .tab-panel {
+  display: none;
+}
+.mw_tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.mw_tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.mw_tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3) {
+  display: block;
+}
+.mw_tabset > label {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px #e8e8e1;
+}
+input:focus-visible + label {
+  outline: 2px solid rgba(0,102,204,1);
+  border-radius: 3px;
+}
+.mw_tabset > input:checked + label {
+  box-shadow: 0 0 0 2px #000;
+}
+.mw_tabset {
+  max-width: 65em;
+  padding-top: 15px;
+}
+.metafield-rich_text_field h4{
+  display: none;
+}
+  </style>
+  
+ //////////////////////////////////////////////////////
+ 
+ 
+ ========================= variant metafield description ====================================
+ 
+   {% assign variantChecker = false %}
+            {% for variant in product.variants %}
+              {% if forloop.index == 2 %}
+                {% assign variantChecker = true %}
+              {% endif %}
+            {% endfor %}
+                        
+            {% if variantChecker == true %}
+              <div class="custom_variant_description">
+                {% for variant in product.variants %}
+                  {% assign tab1_description = variant.metafields.custom.tab1_description | metafield_tag %}
+                  {% unless tab1_description == blank %}
+                    {{ tab1_description }}
+                  {% else %}
+                    <div class="metafield-rich_text_field">
+                      {% include 'ly-description' with product %}{{ ly_translation }}
+                    </div>
+                  {% endunless %} 
+                {% endfor %}
+              </div>              
+            {% endif %}
+
+            {% if variantChecker == false %}
+              {% if product.selected_or_first_available_variant.metafields.custom.tab1_description != blank %}
+                <div class="product-single__description rte">
+                  {{ product.selected_or_first_available_variant.metafields.custom.tab1_description | metafield_tag }}
+                </div>
+              {% else %}
+                
+                {% unless description_style == 'full' %}
+                <div class="product-single__description rte">
+                {% comment %}ly_code_replace_for_[ product.description ]_begin{% endcomment %}{% include 'ly-description' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
+                </div>
+              
+                {% include 'product-additional-content', section_id: section_id %}
+                {% endunless %}
+              {% endif %}
+            {% endif %}
+			
+			<style>
+							.custom_variant_description .metafield-rich_text_field{
+				  display: none;
+				}
+
+				.custom_variant_description .metafield-rich_text_field.show_cus_meta{
+				  display: block;
+				}
+			</style>
+			
+			<!-----js------>
+			
+			 const prdVarEl = document.querySelectorAll('.variant-input-wrap[data-index="option1"] .variant-input');
+  const varMeta = document.querySelectorAll(".custom_variant_description .metafield-rich_text_field");
+
+  if (varMeta[0]) {
+    for (let i = 0; i < prdVarEl.length; i++) {
+
+      prdVarEl[i].setAttribute("cus_index",i);
+      if (prdVarEl[i].querySelector("input").checked) {
+        let cusIndex = prdVarEl[i].getAttribute("cus_index");
+        if (varMeta[cusIndex]) {
+          varMeta[cusIndex].classList.add("show_cus_meta");
+        }
+      }
+
+      prdVarEl[i].addEventListener("click",function(){
+        if (document.querySelector(".show_cus_meta")) {
+          document.querySelector(".show_cus_meta").classList.remove("show_cus_meta");
+        }
+        cusIndex = this.getAttribute("cus_index");
+        if (varMeta[cusIndex]) {
+          varMeta[cusIndex].classList.add("show_cus_meta");
+        } 
+      })
+
+    }
+  }
+  
+  //////////////////////////////////////////////////////////////
+  
+  ==================== metafield video ============================
+  {{ section.settings.video_url.sources[1].url }}
+  
+  //////////////////////////////////
+  
+  // >>>>>>>>>>>>>>>>>>>>>product page variant images show or hide>>>>>>>>>>>>>>>>>
+
+
+
+
+$(document).ready(function() {
+  $(".variant-input").click(function(){
+      var variantval = $(this).attr("data-value");
+      $(".slick-track .product__thumb-item").hide();
+
+      $(".slick-track").find('.mw_'+ variantval ).show(); 
+});
+});
+
+$(document).ready(function() {
+    let variantval  = $('input:radio[name=Leaps]:checked').val();
+    $(".slick-track .product__thumb-item").hide();
+    $(".slick-track").find('.mw_'+ variantval ).show(); 
+
+});
+
+---------------- complete ----------------------------
+
+$(document).ready(function() {
+
+  let variantval  = $('input:radio[name=Leaps]:checked').val();
+  if (document.querySelector(`.slick-track .mw_${variantval}`)) {
+    
+    $(".slick-track .product__thumb-item").hide();
+    $(".slick-track").find('.mw_'+ variantval ).show(); 
+
+    $(".variant-input").click(function(){
+      let variantval = $(this).attr("data-value");
+      $(".slick-track .product__thumb-item").hide();
+      $(".slick-track").find('.mw_'+ variantval ).show(); 
+    });
+
+  }
+
+});
+
+/////////////////////////////////////////////////
+
+=================Add recently product in cart  =============
+ function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  window.onload = () => {
+    
+    // Get the value of the cookie
+    const cookieValue = getCookie("sf-recent-viewed-products");
+
+    
+
+    // Check if the cookie value exists
+    if (cookieValue) {
+      // Parse the cookie value (assuming it's in JSON format)
+      const products = JSON.parse(cookieValue);
+      
+      // Append each product to the specified div element
+      const divElement = document.querySelector(".resent_product_mw");
+
+        // products.map( handle => {
+        //   const prodHTML =  fetchCache(`/products/${handle}?view=grid-card-item`);
+        //   console.log(prodHTML);
+        //  });
+     
+        // products.forEach(hdl => {
+        // const node = this.productNodes[hdl];
+
+        // if (node) {
+        //   this.domNodes.productList.appendChild(node);
+        // }
+      //});
+
+       var rv_prd = '<div class="mw_recently">';
+
+       async function asyncForEach(array, callback) {
+        for (let index = 0; index < array.length; index++) {
+          await callback(array[index], index, array);
+        }
+      }
+
+       const start = async () => {
+       await asyncForEach(products, async(product) => {
+        
+        await jQuery.getJSON(window.Shopify.routes.root + 'products/'+product+'.js', function(product) {
+              
+              rv_prd += '<div><h3>'+product.title+'</h3><p>'+product.price+'<p><img src="'+product.featured_image+'"><a href="'+product.url+'">Buy now</a></div>';
+    
+            });
+           
+           
+          });
+          
+          
+      rv_prd += '</div>';
+
+      $('.resent_product_mw').append(rv_prd);
+        
+      }
+      start();
+
+
+    
+
+     
+
+
+    }
+  };
+
+/////////////////////////////////////////////////////////////////////////////
+
+========= // add recently product in cart (complete) ====================================
+aah div jithe call karna othe rakh do
+<div class="resent_product_mw"></div>
+      </div>
+	  
+	  
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  window.onload = () => {
+    
+    
+  };
+
+  
+  document.onreadystatechange = () => {
+    if (document.readyState === "complete") {
+
+      // Get the value of the cookie
+    const cookieValue = getCookie("sf-recent-viewed-products");
+
+    
+
+    // Check if the cookie value exists
+    if (cookieValue) {
+      // Parse the cookie value (assuming it's in JSON format)
+      const products = JSON.parse(cookieValue);
+      
+      // Append each product to the specified div element
+      const divElement = document.querySelector(".resent_product_mw");
+
+      
+
+       async function asyncForEach(array, callback) {
+        for (let index = 0; index < array.length; index++) {
+          await callback(array[index], index, array);
+        }
+      }
+
+       const start = async () => {
+        var rv_prd = '<div class="mw_recently">';
+       await asyncForEach(products, async(product) => {
+        
+        await jQuery.getJSON(window.Shopify.routes.root + 'products/'+product+'.js', function(product) {
+              
+              rv_prd += '<div><img src="'+product.featured_image+'"><h3>'+product.title+'</h3><p>$'+(product.price / 100).toFixed(2)+'<p><a href="'+product.url+'">Buy now</a></div>';
+    
+            });
+           
+           
+          });
+          
+          
+      rv_prd += '</div>';
+
+      $('.resent_product_mw').append(rv_prd);
+        
+      }
+      start();
+
+      const targetNode = document.querySelector(".cus-drawer-sec form.checkout-form");
+      console.log(targetNode);
+        const config = { 
+            attributes: true,
+            childList: true
+            // subtree: true
+           };
+      
+        const observer = new MutationObserver (function(e) {
+      console.log("fefwewf");
+      if (!document.querySelector(".mw_recently")) {
+        start();
+      }
+        });
+        
+        observer.observe(targetNode, config);
+
+    }
+    }
+  };
+///////////////////////////////////////////////////////////////////
+
+=========== trigger js ==================
+
+  $( document ).ready(function() {
+    $('body').on("click", '.cls_icon', function(){
+      $(".scd__wrapper").trigger("click");
+    });
+  });
+  
+  //////////////////////////
+  
+  
+  =============== product.title ke kitne words ja letter show karwana ===============
+  
+  ----------------- words --------------------------
+  {{ product.title | split: ' ' | slice: 0, 5 | join: ' ' }}
+   -------- Letter ---------------------------------
+  {{ product.title | truncate: 50 }}
+
+
+/////////////////////////////////////////////////////////
+
+======================= order call ===============================
+
+<h2 class="text-2xl font-medium mb-2 mob_fs_14 pdl_5vw">Orders</h2>
+<div class="main_order md:w-5/6 aic_address_info mb-24">   
+    {% for order in customer.orders %}
+    {% comment %} <p>Order ID: {{ order.order_number }}</p>
+    <p>Total: {{ order.total_price | money }}</p>
+    <p>Status: {{ order.financial_status }}</p>
+    <hr> {% endcomment %}
+    {% for line_item in order.line_items %}
+        {% assign product = line_item.product %}
+            <div class="order-in">
+                <div class="product-images">
+                  {% if product.images.size > 0 %}
+                    <img src="{{ product.images[0].src | img_url: 'master' }}" alt="{{ product.title }} - {{ product.images[0].alt }}">
+                  {% endif %}
+                </div>
+                    <h3 class="cus_fonts_serif fsz_14 mob_fs_12 mt-5">{{ product.title }}</h3>
+            </div>
+    {% endfor %}    
+{% endfor %}
+</div>
+
+////////////////////////////////////////////////
+
+
+
+
+			
+			
+			
+			
+			
+  
+  
+  
+ 
+ 
+  
+ 
+ 
+ 
