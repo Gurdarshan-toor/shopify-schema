@@ -1811,6 +1811,40 @@ aah div jithe call karna othe rakh do
 
 ////////////////////////////////////////////////
 
+====================== fonts custom ====================
+
+Asset > woff, woff2 upload
+
+@font-face {
+font-family:"";
+src: url("") format(""),
+url("") format("");
+}
+
+h1,h2,h3,h4,h5,h6,body,p,a{ font-family: "" !important; }
+
+===================================================================
+
+@font-face {
+font-family:"AmaticSC-Regular";
+src: url("AmaticSC-Regular.woff2") format("woff2"),
+url("AmaticSC-Regular.woff") format("woff");
+}
+
+h1,h2,h3,h4,h5,h6,body,p,a { font-family: "AmaticSC-Regular" !important; }
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+@font-face {
+font-family:"AmaticSC-Regular";
+src: url({{"AmaticSC-Regular.woff2" | asset_url }}) format("woff2"),
+url("AmaticSC-Regular.woff") format("woff");
+}
+
+h1,h2,h3,h4,h5,h6,body,p,a { font-family: "AmaticSC-Regular" !important; }
+
+
 
 
 
