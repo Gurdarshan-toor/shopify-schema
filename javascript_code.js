@@ -170,3 +170,38 @@ function showImages(seletedInput) {
     }
   });
 }
+
+=============================CDN link============================================
+<!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->   
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	
+///////////////////////////////////////////////////////////////////////////// 
+	
+======================custom slick slider link asset file================================	
+	
+	   <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
+     <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
+
+    <script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+	
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+======================= custom slick  =============================
+
+Asset main file import karni---- slick.css, slick-theme.css, jquery.min.js, slick.min.js
+
+layout > theme.liquid
+
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
+    {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+ 
+    {{ 'jquery.min.js' | asset_url | script_tag }} 
+    {{ 'slick.min.js' | asset_url | script_tag }}
+	
+////////////////////////////////////////////////////////
