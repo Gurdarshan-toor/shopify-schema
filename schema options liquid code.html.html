@@ -976,3 +976,31 @@ h1, h2, h3, h4, h5, h6 {
   {{ product.collections.first.title | link_to: product.collections.first.url }}
 
   ////////////////////////////////////
+
+
+  =============== related product , recommended product cart drawer on show ======================================
+
+  {%- assign firstPrd = '' -%}
+    {% for item in cart.items %}
+      {% if forloop.first == true %}
+      {%- assign firstPrd = item.url | | split: '/' -%}
+      {% endif %}
+{% comment %} recomment code {% endcomment %}
+  {%- assign curFirstUrl = firstPrd.last | split: "?" -%}
+  {%- assign curFirstUrl = curFirstUrl| first -%}
+  {%- assign productFirst = all_products[curFirstUrl] -%}
+  {%- assign firstCollection = productFirst.collections.first -%}
+  {% comment %} {% for recommended_product in firstCollection.products limit:4 %}
+    {{ recommended_product.title }}<br>
+  {% endfor %} {% endcomment %}
+  <div class="collection__grid-loop grid__wrapper cart_recommended_prd">
+    {% for recommended_product in firstCollection.products limit:4 %}
+      <div class="product-index {{ grid_item_width }}" data-product-id="{{ recommended_product.id }}" data-aos="{{ settings.scroll_animation }}" data-aos-delay="{{ forloop.index | times: 150  }}">
+          {% render 'product-listing', product: recommended_product %}
+      </div>
+    {%- endfor -%}
+  </div>
+  {% comment %} end recomment code {% endcomment %}
+
+
+  ///////////////////////////////////////////////////////////////////////////////
