@@ -205,3 +205,17 @@ layout > theme.liquid
     {{ 'slick.min.js' | asset_url | script_tag }}
 	
 ////////////////////////////////////////////////////////
+
+
+function goBack() {
+  window.history.back();
+}
+5:25
+<div class="cart-header">
+        <h1 class="cart-header__title">{{ 'cart.general.title' | t }}</h1>
+        <a href="#" class="text-link text-link--accent" onclick="goBack()">
+          {{ 'cart.general.continue_shopping' | t }}
+        </a>
+    </div>
+
+    =====================================
