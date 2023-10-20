@@ -1,0 +1,1092 @@
+Advance css
+https://www.youtube.com/watch?v=Edsxf_NBFrw&t=495s&ab_channel=CodeWithHarry
+
+1. Display: flex
+2. Display: grid
+3. transition
+4. position
+5. transform  
+6. animation
+7. background image
+8. After/before
+9. parent child
+10. overlay
+11. Gradient with Image
+12.opacity
+13. shadow
+/* custom css  */
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+.flexed{
+    display:flex;
+  }
+.flexed_wrap{
+    flex-wrap: wrap;
+}
+.justi_space{
+  justify-content: space-between;
+}
+.justify_ctr{
+  justify-content: center;
+}
+.fd_column{
+  flex-direction: column;
+}
+.text_ctr{
+  text-align:center;
+}
+.text_lt{
+  text-align:left;
+}
+.mg_auto{
+  margin:auto;
+}
+.mg_0{
+  margin:0;
+}
+.bolded{
+  font-weight: 700;
+}
+.gap_10{
+  gap:10px;
+}
+.fs_12{
+  font-size: 12px;
+}
+.fs_15{
+  font-size: 15px;
+}
+.fs_20{
+  font-size: 20px;
+}
+.fs_22{
+  font-size:22px;
+}
+.fs_25{
+  font-size:25px;
+}
+.fs_50{
+  font-size:50px;
+}
+.fs_60{
+  font-size:60px;
+}
+.fs_72{
+  font-size:72px;
+}
+.mx_100 {
+  max-width: 100%;
+}
+.wd_10{
+  width: 10%;
+}
+.wd_15{
+  width: 15%;
+}
+.wd_20{
+  width: 20%;
+}
+.wd_35{
+  width: 35%;
+}
+.wd_40{
+  width: 40%;
+}
+.wd_50{
+  width: 50%;
+}
+.wd_55{
+  width: 55%;
+}
+.wd_60{
+  width: 60%;
+}
+.wd_65{
+  width: 65%;
+}
+.wd_70{
+  width: 70%;
+}
+.wd_72{
+  width: 72%;
+}
+.wd_80{
+  width: 80%;
+}
+.wd_100{
+  width: 100%;
+}
+.mg_t20{
+  margin: 20px 0;
+}
+.mg_tb_35{
+  margin: 35px 0;
+}
+.mg_tb_60{
+  margin: 60px 0;
+}
+.pd_tb_80 {
+  padding: 80px 0;
+}
+.pd_tb_10 {
+  padding: 10px 0;
+}
+.pd_tb_20 {
+  padding: 20px 0;
+}
+.pd_tb_30 {
+  padding: 30px 0;
+}
+.pd_tb_40 {
+  padding: 40px 0;
+}
+.pd_t20{
+  padding-top:20px;
+}
+.pd_t30{
+  padding-top:30px;
+}
+.pd_t40{
+  padding-top:40px;
+}
+.pd_t80{
+  padding-top:80px;
+}
+.pd_b10{
+  padding-bottom: 10px;
+}
+.pd_b30{
+  padding-bottom: 30px;
+}
+.pd_b35{
+  padding-bottom: 35px;
+}
+.pd_b70{
+  padding-bottom: 70px;
+}
+.pd_b80{
+  padding-bottom: 80px;
+}
+.letr_unset{
+  letter-spacing: initial;
+}
+.line_hgt_unset{
+  line-height: initial;
+}
+.div_hide{
+  display:none;
+}
+.light_batn{
+  background: #ffffff;
+}
+.txt_large{
+  text-transform: uppercase;
+}
+.txt_white{
+  color:#fff;
+}
+.color_tria{
+  color: #172025;
+}
+.rang_grey{
+  color:#364653;
+}
+.posi_relative{
+  position: relative;
+}
+.light_batn a{
+  color: #000000;
+  font-size: 20px;
+}
+.bdr_bottom{
+  border-bottom:1px solid #172025;
+}
+hr.cus_hr {
+  border: none;
+  border-top: solid .1rem rgba(var(--color-foreground),.08);
+  width: 95%;
+  margin: auto;
+}
+hr.cus_hr_100 {
+  width: 100%;
+}
+.cus_bg_color{
+  background-color: #172025;
+}
+/************** Custom css Mobile ***************************/
+@media only screen and (max-width: 767px) {
+  .mob_dir_col{
+    flex-direction: column;
+  }
+  .mob_pt_0{
+    padding-top:0px;
+  }
+  .mob_pt_20{
+    padding-top:20px;
+  }
+  .mob_wd_50{
+    width: 50%;
+  }
+  .mob_wd_60{
+    width: 60%;
+  }
+  .mob_wd_70{
+    width: 70%;
+  }
+  .mob_wd_80{
+    width: 80%;
+  }
+  .mob_wd_90{
+    width: 90%;
+  }
+  .mob_wd_100{
+    width: 100%;
+  }
+  .mob_fs_9{
+    font-size: 9px;
+  }
+  .mob_fs_10{
+    font-size: 10px;
+  }
+  .mob_fs_13{
+    font-size: 13px;
+  }
+  .mob_fs_15{
+    font-size: 15px;
+  }
+  .mob_fs16{
+    font-size: 16px;
+  }
+  .mob_fs22{
+    font-size: 22px;
+  }
+  .mob_pb_40{
+    padding-bottom: 40px;
+  }
+  .mob_pt_5{
+    padding-top:5px;
+  }
+  .mob_flexed_table{
+    display: table;
+  }
+} 
+/************** max width 767 ***************************/
+@media only screen and (max-width: 767px) {
+  .mob_dir_col{
+    flex-direction: column;
+  }
+  .mob_pt_20{
+    padding-top:20px;
+  }
+  .mob_wd_70{
+    width: 70%;
+  }
+  .mob_fs16{
+    font-size: 16px;
+  }
+  .mob_pb_40{
+    padding-bottom: 40px;
+  }
+}
+
+
+<!------ custom css ---------->
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+background-image
+after: before:
+slick slider
+image overlap
+grid column
+equal height width
+hover color change another element
+
+<!------- Blink -------->
+
+.product-block.custom-blink {
+  animation: blinker 1.5s linear infinite;
+  color: #9f8561;
+  font-weight: 700;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+<!-------/Blink -------->
+
+<!-------border offset bahar to border dena -------->
+
+  border: 1px solid black;
+  outline: 1px solid red;
+  outline-offset: 15px;
+  
+  
+<!------------- flexbox properties --------------------->
+   flex-grow:2;
+   flex-shrink:0;
+   
+<!-------- media query mobile view ---->
+
+@media only screen and (max-width: 767px) {
+      .batn-mob-hide{
+        display:none;
+      }
+}
+@media only screen and (min-width: 768px) {
+
+}
+<!-------- / media query mobile view ---->
+<!------------- product page up down arrow hide ---------------------->
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+<!------------- /product page up down arrow hide ---------------------->
+
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) { 
+    /* STYLES HERE */
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1281px) { 
+
+}
+==========================
+
+<!------------------after svg file link---------------------------->
+
+h4.ftr-cus-toggle::after {
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: "";
+  width: 20px;
+  height: 40px;
+  right:40px;
+  background-image: url("https://cdn.shopify.com/s/files/1/0266/3831/9700/files/chevron-down.svg?v=1663821675");
+}
+
+-------------------------------------------
+---------- first and second icon hatane veste ---------------------------------------------
+ .sf-footer__accordion > :not(:first-child):not(:nth-child(2)) h3.ftr_mob_click:{
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: "";
+        width: 20px;
+        height: 40px;
+        right:40px;
+        background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/plus.png?v=1675250446");
+    }
+	---------------------------------------
+
+---------------------------------------------------------------------
+.sf-footer__accordion > :not(:first-child):not(:nth-child(2)) h3.ftr_mob_click:after{
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: "";
+        width: 20px;
+        height: 40px;
+        right:40px;
+        background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/plus.png?v=1675250446");
+    }
+    .sf-footer__accordion > :not(:first-child):not(:nth-child(2)) h3.ftr_mob_click.ftr_icon_minus:after{
+        background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/minus-sign.png?v=1675255571");
+    }
+=====================================================================================
+
+<!-----------------------product page thumbnail------------------->
+.custom-pdp-side {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+/* .pdp-main-image {
+    grid-column: 2/4;
+    grid-row: 1/4;
+} */
+.custom-thumbnail-side {
+    display:block;
+    height: 464px;
+    overflow: auto;
+}
+.side-thumbnail {
+   margin:auto;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+<!-----------------------checkbox hover background color------------------->
+
+
+input[type='radio'] {
+    accent-color: #282828;
+}
+
+input#vehicle2{
+  position:relative;
+}
+
+input#vehicle2:hover:before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  background-color: #F5F4F0;
+  border:1px solid #F5F4F0;
+  left: 0px;
+  z-index: 11111111111111;
+  top: 0px;
+  border-radius: 50%;
+}
+
+input#vehicle2:checked:before {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: #000;
+    left: 3px;
+    z-index: 111;
+    top: 3px;
+    border-radius: 50%;
+}
+
+///////////////////////////////////////////////////////////////
+
+<!-------------------scroll bar slider show------------------------>
+
+  <div class="slider_progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+    <span class="slider__label sr-only_rec">
+  </div>
+
+
+js
+
+var $sliderRec = $('.slider_wrap');
+  var $progressSlideBar = $('.slider_progress');
+  var $progressBarLabel = $( '.slider__label' );
+  
+  $sliderRec.on('beforeChange', function(event, slick, currentSlide, nextSlide) {   
+    var calc = ( (nextSlide) / (slick.slideCount-1) ) * 100;
+    
+    $progressSlideBar
+      .css('background-position-x', calc + '%')
+      .attr('aria-valuenow', calc );
+    
+    $progressBarLabel.text( calc + '% completed' );
+  });
+  
+  css
+  
+    .slider_progress {
+    display: block;
+    width: 100%;
+    height: 10px;
+    / border-radius: 10px; /
+    overflow: hidden;
+    background-color: #f5f5f5;
+    background-image: linear-gradient(to right, black, black);
+    background-repeat: no-repeat;
+    background-size: 15% 100%;
+    / transition: background-size .4s ease-in-out; /
+    transition: all 0.5s ease-in-out;
+    margin-top: 20px;
+  }
+
+  .sr-only_rec {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+  
+  
+  /////////////////////////////////////////////////////////////
+  
+  ===================child :nth-child(2) ====================
+  
+  .ftr_payment_icon svg.payment-icon:nth-child(2) {
+    display: none;
+}
+-----------------------------------
+
+	.cus_ftr_fc > :nth-child(2) h3 {
+    color: #d8a27d;
+}
+
+
+.cus_ftr_fc > .ftr_mob_order:nth-child(2)  {
+    order: 5;
+}
+==========================================
+================= child :nth child ===============
+
+ul>:not(:nth-child(1),:nth-child(2)){
+   display:none;
+}
+-----------------------------do div chod k style chl rha --------------------------------------
+.lounge-content .lounge-content-paragraph:nth-child(3n-2) p {
+        font-size: 10px;
+        color: yellow !important;
+    }
+==============================================
+
+================= background image gradient ================================
+
+<section style="background: linear-gradient(transparent 60%, white 50% 100%), url({{ section.settings.back-image | img_url: 'master'}});">
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+======================= header icon change color shopify ===========================
+/* header */
+    section.sf-header:not(.scroll-down) .site-header__logo-image img,
+    section.sf-header:not(.scroll-down):not(.scroll-up) .sf-search-form img,
+    section.sf-header:not(.scroll-down):not(.scroll-up) .sf-cart-icon img{
+        filter: brightness(0) invert(1);
+    }
+
+    section.sf-header:not(.scroll-down):not(.scroll-up) .wk-icon__svg {
+        stroke: #fff;
+    }
+================ center properties ===========================
+
+    justify-self: center;
+	
+	
+//////////////////////////////////////////////////////////////	
+
+================== white space ======================
+
+    white-space: pre-wrap; 
+    white-space: pre;
+	
+///////////////////////////////////////////////////////////////////	
+================= grid ==================================
+.product-grid-col {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 100%;
+}
+//////////////////////////////////////////////////////////////////
+
+================= Object fit  ============
+
+object-fit: cover;
+
+
+////////////////////////
+
+================= dropdown ===================
+jQuery(document).ready(function($){
+$(".widgettitle").click(function(){
+  $(this).next().toggleClass("footer_menu_open");
+});
+});
+-------------------
+jis div ja heding te click krna oh class $(".ftr_mob_open") hai
+ $(".ftr_mob_open").click(function(){
+        $(this).next().toggleClass("ftr_navbar_toggle");---aah class click karan te add hundi hai
+      });
+//////////////////////////////////////
+========== position sticky veste css =====================
+main div nu 
+overflow:unset;
+kr do
+    div es div nu sticky lagao
+.mw_sec{
+   position:sticky;
+   top:0;
+}
+
+
+========== position sticky veste js =====================
+
+const stickyDiv = document.querySelector(".mw_slider");
+const stickyDivP = document.querySelector(".mw_slider").parentElement;
+
+document.addEventListener("scroll",function(){
+  // console.log(window.pageYOffset , (stickyDiv.offsetTop - 25));
+  if(window.pageYOffset > (stickyDivP.offsetTop -35)){
+    stickyDiv.classList.add("sticky__cus");
+    // console.log("hi");
+  }
+  else{
+    // console.log("bye");
+    stickyDiv.classList.remove("sticky__cus");
+  }
+});
+
+------------------- css ----------------------------
+.sticky__cus {
+    position: fixed;
+    top: 25px;
+    z-index: 11111;
+    background: #fff;
+    padding: 25px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    transition: all 0.1s ease-out;
+  }
+  
+  .options span {
+  position: absolute;
+  line-height: 14px;
+  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+//////////////////////////////////////////////////////////////////////
+
+
+const stickyDiv = document.querySelector(".mw_slider");
+const stickyDivP = document.querySelector(".mw_slider").parentElement;
+
+document.addEventListener("scroll",function(){
+  if(window.pageYOffset > (stickyDivP.offsetTop -35)){
+    stickyDiv.classList.add("sticky__cus");
+  }
+  else{
+    stickyDiv.classList.remove("sticky__cus");
+  }
+});
+
+////////////////////////////////////////////////////////////////////
+
+================ video lagon veste custom html section lo ===============================
+
+
+{
+              "type": "html",
+              "id": "html",
+              "label": "Custom HTML"
+            }
+<video width="100%" height="300" controls="">
+    <source src="https://cdn.shopify.com/videos/c/o/v/ddeb7121fd144cb38c436d263a9e97f3.mov">
+    Your browser does not support the video tag.
+  </video>
+  
+  
+  ////////////////////////////////////////////////////
+  
+  =============== slick slider arrows replace icon image =======================
+  
+  .slick-prev::before {
+    content: "";
+    background-image: url(path/to/prev-icon.svg);
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.slick-next::before {
+    content: "";
+    background-image: url(path/to/next-icon.svg);
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+
+//////////////////////////////////////////////////////////////////
+
+=================== multiple class kaise de =======================
+.cus_list :is(p, li, a){
+	color:red;
+}
+.cus_list p,
+.cus_list li,
+.cus_list a{
+   color:red;
+}
+
+////////////////////////////////
+
+//////// radio button click hon te, je male te click kara ge male dress show hon gyi , je female te click karan ta 
+sirf female dress show hon gyi ////////////
+
+------------------- html ----------------------------
+ <!-- Step 7 -->
+    <section id="progress-form__panel-7" role="tabpanel" aria-labelledby="progress-form__tab-7" tabindex="0" hidden>
+      <div id="cus_dress_female">
+      <h3>For Dress Female</h3>
+      <div class="sm:d-grid sm:grid-col-3 sm:mt-3">
+        
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Lehengas</span>
+        </label>
+      </div>
+
+        
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Anarkalis</span>
+        </label>
+      </div>
+
+        
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Gowns</span>
+        </label>
+      </div>
+
+        
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Shararas</span>
+        </label>
+      </div>
+
+        
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Sarees</span>
+        </label>
+      </div>
+
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Kurta Sets</span>
+        </label>
+      </div>
+
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Crop Top & Skirts</span>
+        </label>
+      </div>
+
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Contemporary</span>
+        </label>
+      </div>
+
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>Prom Gowns</span>
+        </label>
+          </div>
+        </div>
+      </div>
+
+      <div id="cus_dress_male">
+        <h3>For Dress Male</h3>
+      <div class="mt-1 form__field">
+        <label class="form__choice-wrapper">
+          <input id="email-newsletter" type="checkbox" name="email-newsletter" value="Yes">
+          <span>kurta</span>
+        </label>
+      </div>
+      </div>
+
+
+      <div class="d-flex flex-column-reverse sm:flex-row align-items-center justify-center sm:justify-end mt-4 sm:mt-5">
+        <button type="button" class="mt-1 sm:mt-0 button--simple" data-action="prev">
+          Back
+        </button>
+        <button type="submit">
+          Submit
+        </button>
+      </div>
+    </section>
+    <!-- / End Step 7 -->
+	------------------------------------------
+------ jQuery --------------------------
+ const defaultChecked = $('input[name="gender"]:checked').val();
+  if (defaultChecked === 'male') {
+    $('#cus_dress_female').hide();
+      $('#cus_dress_male').show();
+  } else if (defaultChecked === 'female') {
+    $('#cus_dress_female').show();
+      $('#cus_dress_male').hide();
+  }
+
+
+  // Add a change event listener to the radio buttons
+  $('input[name="gender"]').change(function() {
+    // Check which radio button is selected
+    if ($(this).val() === 'male') {
+      $('#cus_dress_female').hide();
+      $('#cus_dress_male').show();
+    } else if ($(this).val() === 'female') {
+      $('#cus_dress_female').show();
+      $('#cus_dress_male').hide();
+    }
+  });
+  ----------------------------------------------------------
+  
+  ------------- male select karan te male dress aa rhi fir female karan te female , fir to male karan te aa dress empty 
+  ho jandi aa us veste -----------
+  
+  const defaultChecked = $('input[name="contact[gender]"]:checked').val();
+  if (defaultChecked === 'male') {
+    $('#cus_dress_female').hide();
+    $('#cus_dress_male').show();
+    $("#cus_dress_female input[type='checkbox']:checked").prop("checked", false);
+  } else if (defaultChecked === 'female') {
+    $('#cus_dress_female').show();
+    $('#cus_dress_male').hide();
+    $("#cus_dress_male input[type='checkbox']:checked").prop("checked", false);
+  }
+
+
+  // Add a change event listener to the radio buttons
+  $('input[name="contact[gender]"]').change(function() {
+    // Check which radio button is selected
+    if ($(this).val() === 'male') {
+      $('#cus_dress_female').hide();
+      $('#cus_dress_male').show();
+      $("#cus_dress_female input[type='checkbox']:checked").prop("checked", false);
+    } else if ($(this).val() === 'female') {
+      $('#cus_dress_female').show();
+      $('#cus_dress_male').hide();
+      $("#cus_dress_male input[type='checkbox']:checked").prop("checked", false);
+    }
+  });
+  
+  --------------------------------------------------------------------------
+
+/////////////////////////////////////
+
+=================== plus minus code after before ===========================
+.faq-question:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background: #000;
+    top: 0px;
+    bottom: 0;
+    left: 750px;
+    right: 0;
+    margin: auto;
+    rotate: 90deg;
+}
+.faq-question:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background: #000;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 750px;
+    margin: auto;
+}
+
+/////////////////////////////////////////////////
+
+====================== active heading without javascript ===================
+
+.cus_collect_heading label[for^="tab"]:hover,
+  .cus_collect_heading label[for^="tab"]:active,
+  .cus_collect_heading label[for^="tab"]:focus,
+  input[type="radio"]:checked + .cus_collect_heading label {
+    color: black;
+  }
+  
+/////////////////////////////////////////////////////////////////////////
+
+============================ class add & close button==============================================
+
+<script type="text/javascript">
+  var myDiv = document.querySelector(".ham-burger");
+   myDiv.addEventListener("click", function() {
+    document.querySelector(".mobile-menu").classList.add("hum-burgr");
+});  
+var humb = document.querySelector("#mw-close-icon");
+humb.addEventListener("click", function(e) {
+    document.querySelector(".mobile-menu").classList.remove("hum-burgr");
+});
+</script>
+
+//////////////////////////////////////////////
+
+========================== bottom scroll hide karan veste ===========================
+
+.cus_collection .slider.slider--tablet {
+        overflow-y: hidden;
+        overflow-x: auto;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .cus_collection .slider.slider--tablet::-webkit-scrollbar{
+        display: none;
+    }
+	
+////////////////////////////////////////////////////////////////////
+
+============== Mobile te slick slider nhi chaida ============================
+
+ $( document ).ready(function() {
+      if (window.matchMedia( "(max-width: 767px)" ).matches) {
+        $('.services_slider_mob .mw_slider').slick('unslick');
+      }
+    });
+	
+/////////////////////////////////////////////////////////////////
+
+============ video auto play ==================
+
+<div class="video-wrapper">
+  <video autoplay muted loop playsinline preload="metadata">
+	  <source src="http://www.adrianparr.com/download/keyboard-video.mp4" type="video/mp4">
+  </video>
+</div>
+===============
+css
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  height: 100%;
+  margin: 0;
+}
+.video-wrapper {
+  width:100%;
+  height:100vh;
+  overflow: hidden;
+}
+  video {
+    object-fit: cover;
+    width:100%;
+    height:100%;
+  }
+}
+
+///////////////////////////////////////////////////
+
+================= text with image sticky ========================================
+
+.image-with-text__text-item.grid__item {
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+}
+.image-with-text__media-item.image-with-text__media-item--medium.image-with-text__media-item--top.grid__item {
+    display: inline-block;
+    float: left;
+    position: sticky;
+    top: 50px;
+}
+.image-with-text__grid.grid.grid--gapless.grid--1-col.grid--2-col-tablet:before, .image-with-text__grid.grid.grid--gapless.grid--1-col.grid--2-col-tablet:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.image-with-text__grid.grid.grid--gapless.grid--1-col.grid--2-col-tablet {
+    display: unset;
+}
+
+/////////////////////////////////////////////////////////////////
+
+================= javascript media query toggle height ==========================
+
+if (window.matchMedia("(max-width: 768px)").matches) {
+  // const filterEl = document.querySelectorAll(".cus_toggleButton");
+
+  function fillterFun(el){
+    let getDivHeight = el.nextElementSibling;
+    el.classList.toggle("filterShow");
+    if (el.classList.contains("filterShow")) {
+      getDivHeight.style.maxHeight = getDivHeight.scrollHeight+'px';
+    }
+    else{
+      getDivHeight.style.maxHeight = 0;
+    }
+  }
+}
+
+/////////////////////////////////////////////
+
+=============================================
+
+$(document).ready(function() {
+  $(".variant-input").click(function(){
+      var variantval = $(this).attr("data-value");
+      $(".slick-track .product__thumb-item").hide();
+
+      $(".slick-track").find('.mw_'+ variantval ).show(); 
+});
+});
+console.log(btn);
+
+or
+
+$(document).ready(function() {
+  $(".variant-input").click(function(){
+      var variantval = $(this).attr("data-value");
+      $(".slick-track .product__thumb-item").hide();
+
+      
+      $(".slick-track").find('[data-customalt="' + variantval + '" ]').show(); 
+});
+});
+console.log(btn);
+
+///////////////////////////////////////////////////////
+================== concat html with variable in jQuery ============================
+let y = 'varaint_name';
+let z = 'prodduct_nmae';
+let n = 'class';
+let d = 'data';
+
+ let x = '<p data-abc="'+n+'" class="' + z + ' mw_'+n+'">your  varaint is ' + y + ' is seleectted';
+ 
+ ///////////////////////////////////
+
+============== click div to another div call ===========
+
+  $("#link_subscribe").on("click", function(){
+    $('#subscribe_main input[type="email"]').focus();
+    });
+	
+	
+	////////////////////////////////////
