@@ -1004,3 +1004,133 @@ h1, h2, h3, h4, h5, h6 {
 
 
   ///////////////////////////////////////////////////////////////////////////////
+
+  =================== Countdown timer =======================================
+
+  <div class="container">
+    <h2>{{ section.settings.heading }}</h2>
+    <div id="timer">
+      <div class="time-segment">
+        <span id="days"></span>
+        <p>Days</p>
+      </div>
+      <div class="time-segment">
+        <span id="hours"></span>
+        <p>Hours</p>
+      </div>
+      <div class="time-segment">
+        <span id="minutes"></span>
+        <p>Minutes</p>
+      </div>
+      <div class="time-segment">
+        <span id="seconds"></span>
+        <p>Seconds</p>
+      </div>
+    </div>
+  </div>
+
+
+<style>
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.time-segment {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+}
+
+.time-segment p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+</style>
+
+
+
+
+{% javascript %}
+
+{% endjavascript %}
+
+
+
+{% schema %}
+  {
+    "name": "Countdown timer",
+    "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading"
+        },
+        {
+          "type": "text",
+          "id": "countdown_timer",
+          "label": "Countdown timer",
+          "info": "Format like this 2023-12-31 23:59:59"
+        }
+    ],
+  
+    "presets": [
+      {
+        "name": "Countdown timer"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script>
+
+const dateDeadline = '{{ section.settings.countdown_timer }}';
+  
+const deadline = new Date(dateDeadline);
+
+const days = document.getElementById('days');
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('minutes');
+const seconds = document.getElementById('seconds');
+
+let intervalId;  // Declare intervalId globally
+
+const updateTime = () => {
+  const now = new Date();
+  const distance = deadline.getTime() - now.getTime();
+
+  const daysRemaining = Math.floor(distance / (1000 * 60 * 60 * 24));
+  days.textContent = daysRemaining;
+
+  const hoursRemaining = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  hours.textContent = hoursRemaining;
+
+  const minutesRemaining = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  minutes.textContent = minutesRemaining;
+
+  const secondsRemaining = Math.floor((distance % (1000 * 60)) / 1000);
+  seconds.textContent = secondsRemaining;
+
+  if (distance < 0) {
+    clearInterval(intervalId);
+    days.textContent = '0';
+    hours.textContent = '0';
+    minutes.textContent = '0';
+    seconds.textContent = '0';
+  }
+};
+
+intervalId = setInterval(updateTime, 1000);  // Assign the intervalId after its declaration
+
+
+</script>
+
+//////////////////////////////////////////////////////////////////////
