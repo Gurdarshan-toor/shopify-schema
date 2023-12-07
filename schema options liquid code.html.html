@@ -1157,3 +1157,22 @@ Whatsaap share
   <a href="https://api.whatsapp.com/send?text=https://qimam.myshopify.com/products/{{product.handle}}" data-mce-href="https://api.whatsapp.com/send?text=https://qimam.myshopify.com/products/{{product.handle}}"><img style="margin-left: auto; float: none; display: block; margin-right: auto;" src="https://cdn.shopify.com/s/files/1/0600/1023/4035/files/whatsapp-logo-33F6A82887-seeklogo.com_32x32.png?v=1642943826" width="32x32" height="32x32" data-mce-selected="1" data-mce-src="https://cdn.shopify.com/s/files/1/0600/1023/4035/files/whatsapp-logo-33F6A82887-seeklogo.com_32x32.png?v=1642943826"></a></div>
 
 //////////////////////////////////////////
+
+================= specific product add class and button click par popup ====================================
+<a href=""  class="{% if template.suffix == 'enquire-now' %} enquire_klaviyo_popup {% endif %} button button--primary {% if block.settings.stretch %}button--full{% endif %}" style="--primary-button-background: {{ button_background_rgb }}; --primary-button-text-color: {{ button_text_color_rgb }}">{{ block.settings.text | escape }}</a>
+          </div>
+          ------
+          {% if template.suffix == 'enquire-now' %} enquire_klaviyo_popup {% endif %}
+
+          // {% if template.name contains "enquire-now" %} enquire_klaviyo_popup {% endif %}
+{{ request. }}
+
+<script>
+  document.querySelector('.enquire_klaviyo_popup').addEventListener('click', function(evt) {
+    evt.preventDefault();
+    window._klOnsite = window._klOnsite || [];
+    window._klOnsite.push(['openForm', 'YbE4wu']);
+})
+</script>
+
+///////////////////////////////////////////////////////////////
