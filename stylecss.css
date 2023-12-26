@@ -1111,3 +1111,13 @@ let d = 'data';
 }
 
   ////////////////
+
+  ========= words max width set letter  ====================
+  .product-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 50px;
+  }
+
+  ////////////////////////////////
