@@ -209,6 +209,13 @@ font-size: {{ section.settings.font_size }}px;
 			   "default": true
 			 }
 		
+       {% if section.settings.fot_family == true %}fot_arabic{% endif %}
+       {
+			   "type": "checkbox",
+			   "id" : "fot_family",
+			   "label": "Product title arabic",
+			   "default": true
+		},
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ======================= Radio left right center ===============
