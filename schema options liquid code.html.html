@@ -98,6 +98,40 @@
 {% endschema %}
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+============== block struture schema =============================
+{% schema %}
+  {
+    "name": "ftd-pdp",
+    "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading"
+        }
+    ],
+     "blocks": [
+     {
+       "name": "Product",
+       "type": "pdp",
+       "settings": [
+          {
+           "type": "product",
+           "id": "featured_product",   
+           "label": "Add product"
+         }
+       ]
+     }
+  ],
+  
+    "presets": [
+      {
+        "name": "ftdp"
+      }
+    ]
+  }
+{% endschema %}
+
+/////////////////////////
 
 ======================= css file call karni=======================
 
