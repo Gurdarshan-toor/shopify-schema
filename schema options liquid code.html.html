@@ -1314,3 +1314,137 @@ video slider
 
 
 ///////////////////////////////////////////////////////////////
+
+=========== product call ===================================
+{%- for block in section.blocks -%}
+     {%- assign product = all_products[block.settings.featured_product] -%}
+        <div class="product-info">
+          
+            <div class="product-image">
+                <img src="{{ product.featured_image | img_url: '510x510'  }}">
+              
+              {% for media in product.media %}
+					<img src="{{ media | img_url: '100x100'}}" alt="{{ media.alt }}">
+              {% endfor %}
+              
+               </div>
+          
+            <div class="product-body">
+                {% if block.settings.heading-title != blank %}
+                   {{ block.settings.heading-title }}
+                {% else %}
+                   <h1> {{ product.title }} </h2>
+                {% endif %}</br>
+                {% if block.settings.price-title != blank %}
+                 Rs.{{ block.settings.price-title }}
+                {% else %}
+                   {{ product.price | money_without_trailing_zeros }}
+                {% endif %}
+                </br>
+                {% if block.settings.product-description != blank %}
+                   {{ block.settings.product-description }}
+                {% else %}
+		          {{product.description}}
+                {% endif %}
+                {% if block.settings.type-title != blank%}
+                  Type:{{ block.settings.type-title }}
+                {% else %}
+                  Type:{{ product.type }}
+                {% endif %}<br>
+                {% if block.settings.vendor-title != blank%}
+                   Vendor:{{ block.settings.vendor-title }}
+                {% else %}
+                   Vendor:{{ product.vendor }}
+                {% endif %}
+
+                <ul>
+  {%- for product in collection.products -%}
+    <li>
+      <a class="product-card" href="{{ product.url | within: collection }}">
+        <img src="{{ product.featured_image.src | img_url: '1024x' }}" alt="">
+        {{ product.title }}
+        <p>
+          <span aria-hidden="true">—</span>
+          {%- if product.price_varies -%}
+            <span class="visuallyhidden">Starting at</span>
+            {{ product.price_min | money_without_trailing_zeros }}
+            <span aria-hidden="true">+</span>
+          {%- else -%}
+            {{ product.price | money_without_trailing_zeros }}
+          {%- endif -%}
+        </p>
+        <p>
+          <span class="visuallyhidden">by</span>
+          {{ product.vendor }}
+        </p>
+      </a>
+    </li>
+  {%- endfor -%}
+</ul>
+            </div>
+
+       </div>
+{%- endfor -%}
+
+{% schema %}
+  {
+     "name": "Product fourteen",
+     "settings": [
+
+     ],
+	 "blocks":[
+         { 
+           "name": "product fourteen",
+           "type": "product",
+           "settings":[
+               {
+                 "type": "product",
+                 "id": "featured_product",   
+                 "label": "Add product"
+               },
+    	       {
+                 "type": "text",
+                 "id": "heading-title",
+                 "label": "Title"
+               },
+               {
+                 "type": "text",
+                 "id": "price-title",
+                 "label": "Price Title"
+			   },
+               {
+                 "type": "richtext",
+                 "id": "product-description",
+                 "label": "Description"  
+               },
+               {
+                 "type": "text",
+                 "id": "type-title",
+                 "label": "Type"
+               },
+               {
+                 "type": "text",
+                 "id": "vendor-title",
+                 "label": "Vendor"
+               }
+           ]
+         }
+     ],
+	"presets": [
+	     {
+	       "name": "Product 14"
+	     }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+.product-info {
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+}
+{% endstylesheet %}
+
+////////////////////////////////////////////////
