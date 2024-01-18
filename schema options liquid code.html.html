@@ -1516,3 +1516,17 @@ https://da5d6a-2.myshopify.com/pages/partner-registration-form?&preview_theme_id
 />
 
 //////////////////////////////////////////////////////
+
+===================== Metaobject code =====================
+main product 
+
+<div class="cus_metaobject page-width">
+  {% assign items = product.metafields.custom.image_grid.value %}
+  {% for item in items %}
+  <div class="grid_image_pdp">
+    <img src="{{ item.image | img_url: 'large' }}">
+  </div>
+  {% endfor %}
+</div>
+
+/////////////////////////////////////////////////////////////////////
