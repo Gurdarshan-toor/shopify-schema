@@ -361,6 +361,30 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.30)), url(
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
 
+----------------- only slider for mobile view  ----------------------------
+<script>
+  $(document).ready(function() {
+    if ($(window).width() <= 768) { // Check for mobile viewport width
+      $('.gird_image_slider').slick({
+        dots: true,
+        infinite: true, // Enable infinite scrolling for mobile
+        speed: 300,
+        slidesToShow: 1, // Adjust slides to show based on preference
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    }
+  });
+  </script>
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ========================== Product Slider Section |  Slick Slider | product in collection ===============================
