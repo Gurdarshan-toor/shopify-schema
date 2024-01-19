@@ -1789,6 +1789,10 @@ aah div jithe call karna othe rakh do
   
   ----------------- words --------------------------
   {{ product.title | split: ' ' | slice: 0, 5 | join: ' ' }}
+  or 
+  {{ product.title | split: ' ' | slice: 0, 5 | join: ' ' | append: '.' }}
+  or
+  {{ product.title | split: ' ' | slice: 0, 5 | join: ' ' | append: '*' }}
    -------- Letter ---------------------------------
   {{ product.title | truncate: 50 }}
 
