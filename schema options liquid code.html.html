@@ -1561,3 +1561,11 @@ main product
 </div>
 
 /////////////////////////////////////////////////////////////////////
+
+=================== Add class body template =============================
+
+{{ template.name }} {{ template.suffix }}
+eg
+<body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {{ template.name }} {{ template.suffix }}">
+
+  /////////////////////////////////////
