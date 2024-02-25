@@ -1609,6 +1609,29 @@ eg
   border-radius: 50px;
 }
 
+----------- slideshow controls 2 vertical --------------------
+.slideshow__controls {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 100;
+  justify-content: end;
+  width: fit-content;
+  border-radius: 50px;
+  transform: rotate(90deg);
+}
+.slideshow__autoplay {
+  visibility: hidden;
+}
+button.slider-counter__link.slider-counter__link--dots.link.slider-counter__link--active {
+    border: 1px solid #fff;
+    border-radius: 50px;
+    color: #fff;
+}
+.slider-counter__link--active.slider-counter__link--dots .dot {
+    background-color: #fff !important;
+    background-color: rgb(var(--color-foreground));
+}
 ///////////////////////////////////////////
 
 ============ CLI cli command =======================
