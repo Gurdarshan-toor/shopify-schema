@@ -1645,3 +1645,33 @@ Pushing theme
 shopify them push --store=abc.myshopify.com
 
 ////////////////////////////////
+
+============= featured product media home page  ==================
+
+<div class="variant-img">
+  <div class="media-all-img">
+    {%- for media in product.media -%}
+      <div class="media_img {{ forloop.index }}" >
+        <img class="cus_swatches_img" data-varimg="{{ media.image |  img_url: 'master' }}" src="{{ media.image |  img_url: 'master' }}" alt="">
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+--- js -------
+$(document).ready(function () {
+  var imageElements = $('.cus_swatches_img');
+  imageElements.click(function () {
+      var imageSrc = $(this).attr('data-varimg');
+      $(this).closest(".custom_featured_products").find('.product__media img').attr('srcset', imageSrc);
+      $(this).closest(".custom_featured_products").find('.product__media img').attr('src', imageSrc);
+  });
+});
+
+$('.media-all-img').slick({
+  infinite: true,
+  slidesToShow:3,
+  slidesToScroll:1
+});
+
+///////////////////////////////////////////////////////////////
